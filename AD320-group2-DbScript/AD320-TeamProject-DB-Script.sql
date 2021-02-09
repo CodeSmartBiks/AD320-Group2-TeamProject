@@ -178,11 +178,3 @@ Select* From OrdersItems;
 Select* From OrdersDetails;
 Select* From PaymentType;
 Select* From Invoices;
-        
- 
-
-
-
-        
-
-
