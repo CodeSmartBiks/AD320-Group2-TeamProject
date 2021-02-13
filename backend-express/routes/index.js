@@ -29,6 +29,8 @@ router.get('/Menus/:id', function(req, res, next) {
   WHERE Cart_Id = ?;`, [req.params.id], (error, results) => {
       /* if req.params.id doesn't match a Cart_Id, return 204 http status and a "no cart found msg"? */
       if (results.length === 0) {
+
+      /* I Can't get it to display the below message if it's already successfully displayed cart info */
         res.send('No such cart', 204);
         /* res.status(204).send(results); */
       } 
