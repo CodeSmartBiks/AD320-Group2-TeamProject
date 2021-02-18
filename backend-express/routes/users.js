@@ -62,7 +62,7 @@ router.get('/:id', function (req, res, next) {
   USING(Cart_Id)
   JOIN menu m
   USING(Menu_Id)
- where Cart_Id= '${req.params.id}';`;
+ where Cart_Id= '${req.params.id}' AND Available = 'Y';`;
 
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
