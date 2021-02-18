@@ -53,7 +53,7 @@ router.get('/Menus/:id', function(req, res, next) {
 
 module.exports = router;
 
-//get all the cart details when customer makes a get call
+//get all the cart details when customer makes a get call - Customer
 router.get('/:id', function (req, res, next) {
 
   let getCartDetails = `SELECT Cart_Id,Menu_Id,Employee_FirstName,Cart_Location,Menu_Name,Menu_Description,Menu_Price FROM employees e JOIN carts c
@@ -75,8 +75,40 @@ router.get('/:id', function (req, res, next) {
     }
 
   })
+
   connection.end();
 });
+
+
+
+// API GET path for seeing all current order for a single cart - Vendor
+router.get('/Orders/:id', function(req, res, next) {
+  
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query(`SELECT orders.Order_Id,Order_Total,Customer_Id,Order_Date,Order_Status, ordersitems.OrderItem_Id FROM Orders 
+  INNER JOIN ordersDetails ON Orders.Order_Id = ordersDetails.Order_Id
+  INNER JOIN ordersItems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
+  
+  WHERE Cart_Id = ?;`,[req.params.id],  (error, results) =>{
+   /*  if (results == undefined){
+      res.status(404).send("Order unavailable");
+    } */
+
+    if(error){
+      res.send(500);
+    }
+    else {
+      res.send(results);
+    }
+    
+  }) 
+
+  connection.end();
+});
+
+
 
 module.exports = router;
 
