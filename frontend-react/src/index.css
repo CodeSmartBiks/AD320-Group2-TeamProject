@@ -12,23 +12,27 @@ html,body {
 
 #wrapper {
   width: 95%;
-  margin:auto;
+  margin: auto;
+  
 }
 header {
   background-color: rgb(192, 165, 12);
   min-height:fit-content;
   padding: .25em;
+  text-align: center;
 }
 
 header img {
   width: 10%;
+  border-radius: 50%;
   
   
 }
 
 h1 {
-  text-align: center;
+  
   font-weight: normal;
+  width: 70%;
   margin: auto;
   line-height: 2em;
   font-size: 5vw;
@@ -54,7 +58,12 @@ a:hover {
   background-color:mediumblue;
 }
 
-
+.mapimage {
+  width:90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 img {
   margin-top: .5em;
@@ -82,17 +91,33 @@ button {
 
 /* DESKTOP */
 @media all and (min-width:1200px) {
+  img.desktop {
+    width:100%;
+    display:inline-block;
+  }
 
+  img.mobile {
+    display:none;  
+}
 }
 
 /* TABLET */
 @media all and (min-width:701px) and (max-width:1199px) {
-
+  img.mobile {
+    display:none;  
+}
 }
 
 /* BIG PHONE */
 @media all and (max-width:700px) {
+  img.desktop {
+    display:none;  
+  }
 
+  img.mobile {
+    width:95%;
+    display:inline-block;
+  }
 }
 
 /* SMALL PHONE */
@@ -102,13 +127,23 @@ button {
   }
   header img {
     margin: .1em;
+    /* margin-top: .1em;
+    margin-bottom: .1em;
+    margin-left:3em; */
     padding: 0;
-    /* height: auto; */
     float: left;
   }
 
   img {
     width: 95%;
+  }
+  img.desktop {
+    display:none;  
+  }
+
+  img.mobile {
+    width:95%;
+    display:inline-block;
   }
 }
 

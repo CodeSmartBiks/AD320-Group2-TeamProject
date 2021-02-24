@@ -2,7 +2,7 @@
 function Header() {
   return (
     <header>
-      <img src={`${window.location.origin}/Hotdog_logo.jpg`}/*width="100"*/ />
+      <img className="logo" src={`${window.location.origin}/Hotdog_logo.jpg`} />
       <h1>HOTDOG CARTS</h1>
     </header>
       
