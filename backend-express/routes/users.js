@@ -108,7 +108,30 @@ router.get('/Orders/:id', function(req, res, next) {
   connection.end();
 });
 
+router.get('/map/:id', function(req, res, next) {
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
 
+  connection.query(`SELECT c.Cart_Id, c.Cart_Name, c.Cart_Location, m.Menu_Name
+    FROM carts c
+    JOIN cartmenus cm ON c.Cart_Id = cm.Cart_Id
+    JOIN menu m ON m.Menu_Id = cm.Menu_Id
+    WHERE c.Cart_Id = ?;`,[req.params.id], (error, results) => {
+      /* if req.params.id doesn't match a Cart_Id, return 204 http status and a "no cart found msg"? */
+      if (results.length === 0) {
+        res.status(404).send("Cart Not Found");
+          /* res.status(204).send('Cart Not Found'); */
+      } 
+      else if (error) {
+        res.sendStatus(500);
+      }
+      else {  
+        /*res.send(results, 200); */
+        res.status(200).send(results);
+      }
+    })
+  /* test comment */
+    connection.end();
+})
 
 module.exports = router;
-
