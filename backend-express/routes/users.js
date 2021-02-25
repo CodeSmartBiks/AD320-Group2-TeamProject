@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
 });
 
 /* GET All Menu items for a specific cart - Vendor/SysAdmin */
-router.get('/Menus/:id', function(req, res, next) {
+router.get('/Menus/:id', function (req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
@@ -30,23 +30,23 @@ router.get('/Menus/:id', function(req, res, next) {
   FROM cartmenus
   INNER JOIN menu ON cartmenus.Menu_Id = menu.Menu_Id
   WHERE Cart_Id = ?;`, [req.params.id], (error, results) => {
-      /* if req.params.id doesn't match a Cart_Id, return 204 http status and a "no cart found msg"? */
-      if (results.length === 0) {
+    /* if req.params.id doesn't match a Cart_Id, return 204 http status and a "no cart found msg"? */
+    if (results.length === 0) {
 
       /* I Can't get it to display the below message if it's already successfully displayed cart info
           UPDATE--apparently 204 won't update the results displayed. 404 actually fixes the issue as desired */
-        res.status(404).send("Cart Not Found");
-        /* res.status(204).send('Cart Not Found'); */
-      } 
-      else if (error) {
-        res.sendStatus(500);
-      } else {
+      res.status(404).send("Cart Not Found");
+      /* res.status(204).send('Cart Not Found'); */
+    }
+    else if (error) {
+      res.sendStatus(500);
+    } else {
 
       /*res.send(results, 200); */
       res.status(200).send(results);
-      }
-    })
-/* test comment */
+    }
+  })
+  /* test comment */
   connection.end();
 
 });
@@ -82,8 +82,8 @@ router.get('/:id', function (req, res, next) {
 
 
 // API GET path for seeing all current order for a single cart - Vendor
-router.get('/Orders/:id', function(req, res, next) {
-  
+router.get('/Orders/:id', function (req, res, next) {
+
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
@@ -91,24 +91,54 @@ router.get('/Orders/:id', function(req, res, next) {
   INNER JOIN ordersDetails ON Orders.Order_Id = ordersDetails.Order_Id
   INNER JOIN ordersItems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
   
-  WHERE Cart_Id = ?;`,[req.params.id],  (error, results) =>{
-   /*  if (results == undefined){
-      res.status(404).send("Order unavailable");
-    } */
+  WHERE Cart_Id = ?;`, [req.params.id], (error, results) => {
+    /*  if (results == undefined){
+       res.status(404).send("Order unavailable");
+     } */
 
-    if(error){
+    if (error) {
       res.send(500);
     }
     else {
       res.send(results);
     }
-    
-  }) 
+
+  })
+
+  connection.end();
+});
+
+/*Issue 42 GET page for admin/menu- this function/call outputs all the menu details from the menu table */
+router.get('/admin/Menu*', function (req, res, next) {
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query('SELECT * FROM Menu', (error, results, fields) => {
+    if (error) {
+      res.send(500);
+    }
+    res.status(200).send(results);
+  })
 
   connection.end();
 });
 
 
+/*Issue 36 GET page for admin/Customer- this function/call outputs all the customer details from customer table*/
+router.get('/admin/Customers', function (req, res, next) {
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query('SELECT * FROM Customer', (error, results, fields) => {
+    if (error) {
+      res.send(500);
+    }
+    res.status(200).send(results);
+  })
+
+  connection.end();
+});
 
 module.exports = router;
+
 
