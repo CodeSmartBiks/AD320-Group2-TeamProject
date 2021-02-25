@@ -1,8 +1,9 @@
 function Map(props) {
     return (
-        <div>
+        <div className="mapimage">
             {/* <h2>CART LOCATIONS</h2> */}
-            <img src={`${window.location.origin}/MapForCartLocation.JPG`} width="500" height="350"/>
+            <img className="desktop" src={`${window.location.origin}/MapForCartLocation.JPG`} />
+            <img className="mobile" src={`${window.location.origin}/Mobile_Map.PNG`} />
         </div>
     )
 }
