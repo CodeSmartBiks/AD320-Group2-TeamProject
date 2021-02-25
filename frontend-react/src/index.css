@@ -87,6 +87,51 @@ button {
   font-family: 'Calibri', sans-serif;
 }
 
+/* ORderItems Sample css */
+.order {
+  background: #f4f4f4;
+  border: 1px solid black;
+  border-radius: 25px;
+  height: 100px;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.userimg {
+  background-color: green;
+  border: 2px solid black;
+  margin: .5em;
+  width: 7%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.orderdetails {
+  margin: 10px;
+  width: 30%;
+  display: block;
+  text-align: left;
+}
+
+.orderdetails p, .ordertotal p {
+  padding: 0;
+}
+
+.ordertotal {
+  background-color: red;
+  padding: 1em;
+  width: 15%;
+  height: 70%;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
 /* START RESPONSIVE STYLES */
 
 /* DESKTOP */
