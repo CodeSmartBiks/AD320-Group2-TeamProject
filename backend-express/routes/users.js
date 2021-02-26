@@ -167,6 +167,31 @@ router.get('/map/:id', function(req, res, next) {
     connection.end();
 })
 
+router.get('/Orders/order/:id', function(req, res, next) {
+  
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query(`SELECT orders.Order_Id,Order_Total,Customer_Id,Order_Date,Order_Status, Cart_Id, ordersitems.OrderItem_Id, Menu_Name, Menu_Price, Quantity FROM orders 
+  
+  INNER JOIN ordersdetails ON orders.Order_Id = ordersdetails.Order_Id
+  INNER JOIN ordersitems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
+  INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id  
+  
+  WHERE orders.Order_Id = ?;`,[req.params.id],  (error, results) =>{
+
+    if (results.length === 0) {
+      res.status(404).send("Order Not Found");
+    }
+    else if (error) {
+      res.sendStatus(500);
+    } else {
+      res.status(200).send(results);
+    }
+  })
+  connection.end();
+});
+
 
 module.exports = router;
 
