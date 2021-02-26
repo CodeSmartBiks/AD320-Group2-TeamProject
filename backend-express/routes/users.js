@@ -109,7 +109,7 @@ router.get('/Orders/:id', function (req, res, next) {
 });
 
 /*Issue 42 GET page for admin/menu- this function/call outputs all the menu details from the menu table */
-router.get('/admin/Menu*', function (req, res, next) {
+router.get('/admin/Menu', function (req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
