@@ -1,24 +1,23 @@
 var express = require('express');
 let mysql = require('mysql2');
-let dbCreds = require('../../../dbCreds.json');
+let dbCreds = require("../../../dbCreds.json");
 var router = express.Router();
 
-/* GET home page. */
-
-router.get('/', function (req, res, next) {
-
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  //let mySQLQuery = "SELECT * FROM Orders";
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
-  connection.query('SELECT * FROM Employees', (error, results, fields) => {
-    if (error) {
+  connection.query('SELECT * FROM Customer',(error, results) =>{
+    
+    if(error){
       res.send(500);
     }
     res.send(results);
-  })
+  }) 
 
   connection.end();
-
 });
 
 /* GET All Menu items for a specific cart - Vendor/SysAdmin */
@@ -64,17 +63,20 @@ router.get('/:id', function (req, res, next) {
   USING(Menu_Id)
  where Cart_Id= '${req.params.id}' AND Available = 'Y';`;
 
+
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
   connection.query(getCartDetails, (error, results) => {
-    if (error) {
+
+    if(error){
       res.send(500);
-    } else {
+    }
+    else {
       res.send(results);
     }
-
-  })
+    
+  }) 
 
   connection.end();
 });
@@ -87,9 +89,11 @@ router.get('/Orders/:id', function (req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
-  connection.query(`SELECT orders.Order_Id,Order_Total,Customer_Id,Order_Date,Order_Status, ordersitems.OrderItem_Id FROM Orders 
+  connection.query(`SELECT Orders.Order_Id,Order_Total,Customer_Id,Order_Date,Order_Status, Cart_Id, ordersitems.OrderItem_Id, Menu_Name, Menu_Price, Quantity FROM Orders 
+  
   INNER JOIN ordersDetails ON Orders.Order_Id = ordersDetails.Order_Id
   INNER JOIN ordersItems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
+  INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id  
   
   WHERE Cart_Id = ?;`, [req.params.id], (error, results) => {
     /*  if (results == undefined){
@@ -99,8 +103,10 @@ router.get('/Orders/:id', function (req, res, next) {
     if (error) {
       res.send(500);
     }
-    else {
-      res.send(results);
+    else if (error) {
+      res.sendStatus(500);
+    } else {
+      res.status(200).send(results);
     }
 
   })
@@ -123,6 +129,10 @@ router.get('/admin/Menu', function (req, res, next) {
   connection.end();
 });
 
+/* router.put('/:id', function(req, res, next) {
+  
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
 
 /*Issue 36 GET page for admin/Customer- this function/call outputs all the customer details from customer table*/
 router.get('/admin/Customers', function (req, res, next) {
@@ -191,8 +201,5 @@ router.get('/Orders/order/:id', function(req, res, next) {
   })
   connection.end();
 });
-
-
-module.exports = router;
 
 
