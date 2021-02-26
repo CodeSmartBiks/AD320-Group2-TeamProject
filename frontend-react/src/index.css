@@ -20,6 +20,7 @@ header {
   min-height:fit-content;
   padding: .25em;
   text-align: center;
+  border-radius: 200px;
 }
 
 header img {
@@ -34,7 +35,7 @@ h1 {
   font-weight: normal;
   width: 70%;
   margin: auto;
-  line-height: 2em;
+  
   font-size: 5vw;
   /*background-color: steelblue; */
 }
@@ -87,7 +88,11 @@ button {
   font-family: 'Calibri', sans-serif;
 }
 
+<<<<<<< HEAD
 /* ORderItems Sample css */
+=======
+/* OrderEntry Sample css */
+>>>>>>> b5f27113ac843b06d65a1cd447a3eef303e735a0
 .order {
   background: #f4f4f4;
   border: 1px solid black;
@@ -132,6 +137,12 @@ button {
   border-radius: 25px;
 }
 
+<<<<<<< HEAD
+=======
+/* END ORDER ENTRY SAMPLE CSS */ 
+
+
+>>>>>>> b5f27113ac843b06d65a1cd447a3eef303e735a0
 /* START RESPONSIVE STYLES */
 
 /* DESKTOP */
@@ -147,7 +158,7 @@ button {
 }
 
 /* TABLET */
-@media all and (min-width:701px) and (max-width:1199px) {
+@media all and (min-width:701px) and (max-width:1200px) {
   img.mobile {
     display:none;  
 }
@@ -159,16 +170,8 @@ button {
     display:none;  
   }
 
-  img.mobile {
-    width:95%;
-    display:inline-block;
-  }
-}
-
-/* SMALL PHONE */
-@media all and (max-width:400px) {
-  #wrapper {
-    width: 100%;
+  h1 {
+    line-height: 2em;
   }
   header img {
     margin: .1em;
@@ -182,6 +185,20 @@ button {
   img {
     width: 95%;
   }
+
+  img.mobile {
+    width:95%;
+    display:inline-block;
+  }
+}
+
+/* SMALL PHONE */
+@media all and (max-width:400px) {
+  #wrapper {
+    width: 100%;
+  }
+
+  
   img.desktop {
     display:none;  
   }

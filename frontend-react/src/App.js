@@ -5,6 +5,27 @@ import MainBody from './components/MainBody';
 import OrderEntry from './components/OrderEntry'
 
 function App() {
+
+  /*
+  constructor(props){
+    super(props);
+
+    this.state = {
+      contact: []
+    }
+  }
+
+  componentDidMount() {
+    let mtTestDataAPI = fetch("http://localhost:3000/testdata")
+      .then((results) => {
+        return results.json();
+      }) .then((myJson) => {
+        console.log("FetchResolved", myJson);
+        this.setState({
+          contacts: myJson
+        });
+      })
+  } */
   return (
     <div className="App">
      <Header />

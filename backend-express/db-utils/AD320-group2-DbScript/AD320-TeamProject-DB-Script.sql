@@ -7,7 +7,7 @@ CREATE TABLE Menu (
 Menu_Id INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
 Menu_Name VARCHAR(50) NOT NULL,
 Menu_Description VARCHAR(150) NOT NULL,
-Menu_Price VARCHAR(50) NOT NULL
+Menu_Price DECIMAL(4, 2) NOT NULL
 );
 
 CREATE INDEX MENUNAME
@@ -17,11 +17,11 @@ CREATE INDEX MENUNAME
 INSERT INTO Menu
 (Menu_Name,Menu_Description,Menu_Price)
 VALUES 
-('OneHotDog', 'VeryTasty',  '$10'),  
-('TwoHotDog', 'Hanson', '4258882626'),
-('SeattleDog', 'All Beef Frank with Cream Cheese', '$6'),
-('Chicago Dog', 'All Beef dog w/ mustard, sweet green pickle relish, onion, tomato wedges, pickle spear, sport peppers, and celery salt.', '$10'),
-('Coke', '12oz. can of Coke', '$2');
+('OneHotDog', 'VeryTasty',  '7.99'),  
+('TwoHotDog', 'Hanson', '9.99'),
+('SeattleDog', 'All Beef Frank with Cream Cheese', '5.99'),
+('Chicago Dog', 'All Beef dog w/ mustard, sweet green pickle relish, onion, tomato wedges, pickle spear, sport peppers, and celery salt.', '9.99'),
+('Coke', '12oz. can of Coke', '1.99');
 
 CREATE TABLE Customer (
 Customer_Id INT(11) PRIMARY KEY AUTO_INCREMENT  NOT NULL,
@@ -112,7 +112,7 @@ VALUES
         
 CREATE TABLE Orders (
 Order_Id INT(11) PRIMARY KEY  AUTO_INCREMENT NOT NULL,
-Order_Total VARCHAR(50) NOT NULL,
+Order_Total DECIMAL(10, 2) NOT NULL,
 Customer_Id INT(11) NOT NULL,
 Order_Date DATETIME NOT NULL,
 Order_Status ENUM('InProgress','Done') NOT NULL,
@@ -127,10 +127,10 @@ Cart_Id INT(11) NOT NULL,
 INSERT INTO Orders
 (Order_Total,Customer_Id,Order_Date,Order_Status,Cart_Id)
 VALUES 
-('$10',1,'2021-01-01','Inprogress', 1),  
-('$11',2,'2021-02-01','Done',2), 
-('$15', 2, '2021-02-13', 'Inprogress', 3),
-('$25', 1, '2021-02-12', 'Done', 4); 
+('10.00',1,'2021-01-01','Inprogress', 1),  
+('11.00',2,'2021-02-01','Done',2), 
+('15.00', 2, '2021-02-13', 'Inprogress', 3),
+('25.00', 1, '2021-02-12', 'Done', 4); 
 
 CREATE TABLE OrdersItems (
 OrderItem_Id INT(11) PRIMARY KEY  AUTO_INCREMENT NOT NULL,
