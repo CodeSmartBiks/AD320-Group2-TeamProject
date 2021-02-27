@@ -8,7 +8,7 @@ import React from "react";
 
 //function App() {
 export default class App extends React.Component {
-  constructor(props) {
+  /* constructor(props) {
     super(props);
 
     this.state = {
@@ -28,23 +28,14 @@ export default class App extends React.Component {
           areContactsFetched: true
         });
       })
-  }
+  } */
           
   render () {
   return (
     <div className="App">
-      {this.state.areContactsFetched || !this.state.contacts ? (
-        <div>loading...</div>
-       ) : (
-          <div>
-            {/*<div>{this.state.contacts}</div>*/}
-            {/*<div>{this.state.contacts[0]}</div>*/}
-            {/*<div>{this.state.contacts[0].Customer_FirstName}</div>*/}
-            <div>{this.state.contacts.Customer_FirstName}</div>
-          </div>
-       )}
-     {/* <Header />
-     <MainBody/> */}
+     
+      <Header />
+      <MainBody/>
     </div>
   );
   }
