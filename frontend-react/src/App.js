@@ -5,36 +5,17 @@ import MainBody from './components/MainBody';
 import OrderEntry from './components/OrderEntry';
 import React, { Component } from 'react';
 
-class App extends React.Component {
-
-  
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: [] }
-  }
-
-  
-
-  componentDidMount() {
-    fetch("http://localhost:3000/users/2")
-      .then((results) => {
-        return results.json();
-      }) .then((myJson) => {
-        console.log("FetchResolved", myJson);
-        this.setState({
-          apiResponse: myJson
-        });
-      })
-  } 
-  render () {
+/* class App extends React.Component { */
+  function App() {
+  /* render () { */
   return (
     <div className="App">
      <Header />
      <MainBody/>
-     <OrderEntry apiResponse={this.state.apiResponse } orderid="Order #27" custname="Mike" items="App.js: Hot Dog, Coke" />
+     <OrderEntry orderid="Order #27" custname="Mike" items="App.js: Hot Dog, Coke, fries, another hot dog! wow." />
     </div>
   );
-  }
+  /*} */
 }
 
 export default App;
