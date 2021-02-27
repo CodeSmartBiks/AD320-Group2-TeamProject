@@ -25,13 +25,10 @@ header {
 
 header img {
   width: 10%;
-  border-radius: 50%;
-  
-  
+  border-radius: 50%; 
 }
 
 h1 {
-  
   font-weight: normal;
   width: 70%;
   margin: auto;

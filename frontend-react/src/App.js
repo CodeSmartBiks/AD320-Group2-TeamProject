@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import './Nav.css';
 import Header from'./components/Header';
-import MainBody from './components/MainBody'
+import MainBody from './components/MainBody';
+import React from "react";
+
 
 function App() {
   return (
@@ -10,6 +13,8 @@ function App() {
      <MainBody/>
     </div>
   );
-}
+} 
+
+
 
 export default App;
