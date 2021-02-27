@@ -32,15 +32,15 @@ function MainBody () {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-            {/* adminpage component */}
+            {/* adminpage component, not About */}
             <About />
           </Route>
           <Route path="/users">
-            {/* vendorpage component */}
+            {/* vendorpage component, not Users */}
             <Users />
           </Route>
           <Route path="/">
-            {/* customerpage component */}
+            {/* customerpage component, not Home */}
             <Home />
           </Route>
         </Switch>
