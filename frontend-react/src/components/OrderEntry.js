@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function OrderEntry ({ orderid, custname, items, apiResponse }) {
+function OrderEntry ({ orderid, custname, items }) {
    // const testdata = apiResponse.location;
     return (
         <div className="order">
