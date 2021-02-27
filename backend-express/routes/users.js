@@ -150,7 +150,7 @@ router.get('/admin/Customers', function (req, res, next) {
 });
 
 
-
+// Issue #27 - Info summary for modal for selected cart on map
 router.get('/map/:id', function(req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
