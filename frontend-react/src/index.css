@@ -88,11 +88,7 @@ button {
   font-family: 'Calibri', sans-serif;
 }
 
-<<<<<<< HEAD
-/* ORderItems Sample css */
-=======
 /* OrderEntry Sample css */
->>>>>>> b5f27113ac843b06d65a1cd447a3eef303e735a0
 .order {
   background: #f4f4f4;
   border: 1px solid black;
@@ -137,12 +133,9 @@ button {
   border-radius: 25px;
 }
 
-<<<<<<< HEAD
-=======
 /* END ORDER ENTRY SAMPLE CSS */ 
 
 
->>>>>>> b5f27113ac843b06d65a1cd447a3eef303e735a0
 /* START RESPONSIVE STYLES */
 
 /* DESKTOP */

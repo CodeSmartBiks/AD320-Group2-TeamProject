@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
-function OrderEntry ({ orderid, custname, items }) {
-    
+function OrderEntry ({ orderid, custname, items, apiResponse }) {
+    const testdata = apiResponse.location;
     return (
         <div className="order">
             <img className="userimg" src ={`${window.location.origin}/user-icon.jpg`} />
             {/* <div className="userimg">User Img</div>{ {float: left;} */}
+            <div>
+                <h3>
+                    {testdata}
+                </h3>
+            </div>
             <div className="orderdetails">
                 <h3>{orderid}</h3>
                 <p>{custname}</p>
