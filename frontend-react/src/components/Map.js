@@ -5,8 +5,10 @@ import apiKey from "../googleMapsApiKey.json";
 const Map = () => {
 
     const mapStyles = {
-        height: "100vh",
-        width: "100%"};
+        height: "90vh",
+        width: "90%",
+        margin: "1em auto"
+    };
 
     const defaultCenter = {
         lat: 47.65629189632677, lng: -122.32059609201939
@@ -17,7 +19,7 @@ const Map = () => {
     return (
         <LoadScript
          googleMapsApiKey={apiKey.key}>
-            <GoogleMap
+            <GoogleMap className="mapimage" 
              mapContainerStyle={mapStyles}
              zoom={13}
              center={defaultCenter}
