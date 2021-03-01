@@ -1,5 +1,6 @@
-//import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import VendorSettings from './VendorSettings'
 
 import '../index.css';
 import '../Nav.css';
@@ -14,5 +15,7 @@ function VendorsApp () {
         </div>
     )
 }
+/* The rendering didnt work for the vendor settings */
+//ReactDOM.render(<VendorSettings />, document.getElementById('root'));
 
 export default VendorsApp;
