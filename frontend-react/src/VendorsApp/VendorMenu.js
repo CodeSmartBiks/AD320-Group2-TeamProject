@@ -17,7 +17,7 @@ function VendorMenu () {
             <Router>
             <div>
               <nav>
-                <ul className="topnav">
+                <ul id="vendorMenu" className="topnav">
                   <li className="tabcontent">
                     <Link to="/vendor">Incomplete Orders</Link>
                   </li>
@@ -58,11 +58,23 @@ function VendorMenu () {
             
             
           </Router>
-         
     
         </div>
     )
 }
 
+
 export default VendorMenu;
 
+{/* 
+// Add active class to the current button (highlight it) 
+const header = document.getElementById("vendorMenu");
+const btns = header.getElementsByClassName("tabcontent");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+*/}
