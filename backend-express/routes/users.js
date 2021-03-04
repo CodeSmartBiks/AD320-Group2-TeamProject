@@ -3,24 +3,9 @@ let mysql = require('mysql2');
 let dbCreds = require("../../../dbCreds.json");
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  //let mySQLQuery = "SELECT * FROM Orders";
-  let connection = mysql.createConnection(dbCreds);
-  connection.connect();
 
-  connection.query('SELECT * FROM Customer',(error, results) =>{
-    
-    if(error){
-      res.send(500);
-    }
-    res.send(results);
-  }) 
 
-  connection.end();
-});
-
-/* GET All Menu items for a specific cart - Vendor/SysAdmin */
+/* VENDOR/ADMIN - GET All Menu items for a specific cart */
 router.get('/Menus/:id', function (req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
@@ -52,7 +37,7 @@ router.get('/Menus/:id', function (req, res, next) {
 
 module.exports = router;
 
-//get all the cart details when customer makes a get call - Customer
+//CUSTOMER - get all the cart details when customer makes a get call
 router.get('/:id', function (req, res, next) {
 
   let getCartDetails = `SELECT Cart_Id,Menu_Id,Employee_FirstName,Cart_Location,Menu_Name,Menu_Description,Menu_Price FROM employees e JOIN carts c
@@ -83,58 +68,14 @@ router.get('/:id', function (req, res, next) {
 
 
 
-// API GET path for seeing all current order for a single cart - Vendor
-router.get('/Orders/:id', function (req, res, next) {
 
-  let connection = mysql.createConnection(dbCreds);
-  connection.connect();
-
-  connection.query(`SELECT Orders.Order_Id,Order_Total,Customer_Id,Order_Date,Order_Status, Cart_Id, ordersitems.OrderItem_Id, Menu_Name, Menu_Price, Quantity FROM Orders 
-  
-  INNER JOIN ordersDetails ON Orders.Order_Id = ordersDetails.Order_Id
-  INNER JOIN ordersItems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
-  INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id  
-  
-  WHERE Cart_Id = ?;`, [req.params.id], (error, results) => {
-    /*  if (results == undefined){
-       res.status(404).send("Order unavailable");
-     } */
-
-    if (error) {
-      res.send(500);
-    }
-    else if (error) {
-      res.sendStatus(500);
-    } else {
-      res.status(200).send(results);
-    }
-
-  })
-
-  connection.end();
-});
-
-/*Issue 42 GET page for admin/menu- this function/call outputs all the menu details from the menu table */
-router.get('/admin/Menu', function (req, res, next) {
-  let connection = mysql.createConnection(dbCreds);
-  connection.connect();
-
-  connection.query('SELECT * FROM Menu', (error, results, fields) => {
-    if (error) {
-      res.send(500);
-    }
-    res.status(200).send(results);
-  })
-
-  connection.end();
-});
 
 /* router.put('/:id', function(req, res, next) {
   
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
-/*Issue 36 GET page for admin/Customer- this function/call outputs all the customer details from customer table*/
+/* ADMIN - this function/call outputs all the customer details from customer table*/
 router.get('/admin/Customers', function (req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
@@ -150,7 +91,7 @@ router.get('/admin/Customers', function (req, res, next) {
 });
 
 
-// Issue #27 - Info summary for modal for selected cart on map
+// CUSTOMER - Info summary for modal for selected cart on map
 router.get('/map/:id', function(req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
@@ -177,6 +118,7 @@ router.get('/map/:id', function(req, res, next) {
     connection.end();
 })
 
+/* VENDOR - Retrieve all details for a specific order */
 router.get('/Orders/order/:id', function(req, res, next) {
   
   let connection = mysql.createConnection(dbCreds);
