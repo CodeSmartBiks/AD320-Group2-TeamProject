@@ -51,12 +51,14 @@ p {
 a {
   color:mediumblue;
   text-decoration: none;
-  background-color: lightyellow;
+  /*background-color: rgb(180, 179, 170); */
+  border-radius: 25px;
 }
 
-a:hover {
-  color:white;
-  background-color:mediumblue;
+
+.tabcontent {
+  border: 1px solid;
+  border-radius: 25px;
 }
 
 .mapimage {
