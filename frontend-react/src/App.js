@@ -5,7 +5,7 @@ import MainBody from './components/MainBody';
 import AdminsApp from './AdminApp/AdminApp';
 import VendorsApp from './VendorsApp/VendorsApp';
 import CustomersApp from './CustomersApp/CustomersApp';
-import VendorSettings from './VendorsApp/VendorSettings';
+
 
 import React, { Component } from 'react';
 import {
@@ -34,10 +34,6 @@ function App() {
             {/* vendorpage component */}
             <VendorsApp />
             </Route>
-            <Route path="/vendorSettings">
-            {/* vendorSettings component */}
-            <VendorSettings />
-          </Route>
           <Route path="/">
             {/* customerpage component */}
             <CustomersApp />

@@ -18,7 +18,6 @@ class VendorSettings extends React.Component {
     render() {
         return (
             <div>
-                <Header />
                 <form className='container'>
                 <label className='Availability'>Cart Availability</label>
                     <label className="switch">
@@ -26,7 +25,7 @@ class VendorSettings extends React.Component {
                         <div className="slider"></div>
                     </label>
                     <label className='Location'>Set The Location</label>
-                    <button className='btn'> AddCarts </button> 
+                    <button className='btn'> Update Cart </button> 
                 </form>
             </div>
         );

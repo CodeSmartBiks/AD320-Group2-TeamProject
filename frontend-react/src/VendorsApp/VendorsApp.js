@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import VendorSettings from './VendorSettings'
-=======
 
-//import React from 'react';
-import ReactDOM from 'react-dom';
->>>>>>> master
+
 
 import '../index.css';
 import '../Nav.css';

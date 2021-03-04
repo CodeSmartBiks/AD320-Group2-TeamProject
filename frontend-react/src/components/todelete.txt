@@ -1,3 +1,0 @@
-Git wouldnt transfer an empty folder to the repo, so this text
-file is merely to aid in uploading.  Please delete once actual
-components are here.
