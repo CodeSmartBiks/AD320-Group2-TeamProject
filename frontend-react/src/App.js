@@ -6,6 +6,7 @@ import AdminsApp from './AdminApp/AdminApp';
 import VendorsApp from './VendorsApp/VendorsApp';
 import CustomersApp from './CustomersApp/CustomersApp';
 
+
 import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
@@ -32,7 +33,7 @@ function App() {
           <Route path="/vendor">
             {/* vendorpage component */}
             <VendorsApp />
-          </Route>
+            </Route>
           <Route path="/">
             {/* customerpage component */}
             <CustomersApp />

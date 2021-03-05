@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 import CompOrderList from "../components/CompOrderList";
 import OrdersList from "../components/OrdersList";
-import VendorSettings from "../components/VendorSettings";
+import VendorSettings from "./VendorSettings";
 import VendorMenuItems from "../components/VendorMenuItems";
 
 
