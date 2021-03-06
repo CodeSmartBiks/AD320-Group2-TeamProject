@@ -60,6 +60,8 @@ Cart_Id INT(11) PRIMARY KEY  NOT NULL AUTO_INCREMENT,
 Cart_Name  VARCHAR(50) NOT NULL,
 Cart_Location  VARCHAR(50) NOT NULL,
 Cart_Availability ENUM('Y','N') NOT NULL,
+Latitude DECIMAL(10,8) NOT NULL,
+Longitude DECIMAL(11,8) NOT NULL,
 Employee_Id INT(11) NOT NULL,
   CONSTRAINT Carts_Employee_Id_fk FOREIGN KEY (Employee_Id)
         REFERENCES Employees (Employee_Id)
@@ -67,12 +69,12 @@ Employee_Id INT(11) NOT NULL,
 
 /*Inserting data Queries*/
 INSERT INTO Carts
-(Cart_Name,Cart_Location,Cart_Availability,Employee_Id)
+(Cart_Name,Cart_Location,Cart_Availability,Latitude,Longitude,Employee_Id)
 VALUES 
-('Cart1', 'Downtown,Seattle','Y','2'),  
-('Cart2', 'MLT,Seattle', 'Y','3'),
-('Cart3', '3rd & Pine', 'Y', '4'),
-('GreenCart', 'Greenlake Bathhouse', 'Y', '5');
+('Cart1','Downtown,Seattle','Y','90.0','180.0','2'),  
+('Cart2','MLT,Seattle', 'Y','85.0','176.0','3'),
+('Cart3','3rd & Pine', 'Y','77.0','100.0', '4'),
+('GreenCart','Greenlake Bathhouse','Y','79.0','90.0','5');
         
 CREATE TABLE CartMenus (
 CartMenus_Id INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -213,7 +215,7 @@ VALUES
 (2,2); 
 
 /* Sample queries to test the data*/ 
-
+/*
 Select* From Menu;
 Select* From Customer;
 Select* From Employees;
@@ -224,3 +226,4 @@ Select* From OrdersItems;
 Select* From OrdersDetails;
 Select* From PaymentType;
 Select* From Invoices;
+*/
