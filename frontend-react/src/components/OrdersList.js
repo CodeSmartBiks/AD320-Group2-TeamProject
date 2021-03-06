@@ -47,14 +47,14 @@ import OrderEntry from './OrderEntry.js';
     
 
         render() {
-            
+            const OrderList = this.state.orders.map(order => {
+                /*return <OrderTest order={order} id={order.id} />; */
+
+                return <OrderEntry key={order.Order_Id} order={order}  />;
+            });
         return (
             <div>
-            {this.state.orders.map(order => {
-                 /*return <OrderTest order={order} id={order.id} />; */
-
-                 return <OrderEntry order={order} key={order.id} />;
-            })}
+            {OrderList}
         </div>
             )
         
