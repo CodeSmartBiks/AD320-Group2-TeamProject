@@ -21,13 +21,13 @@ router.get('/orders/cart/:id', function (req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
-  connection.query(`SELECT Orders.Order_Id,Order_Total,Customer_Id,Order_Date,Order_Status, Cart_Id, ordersitems.OrderItem_Id, Menu_Name, Menu_Price, Quantity FROM Orders 
-  
+  connection.query(`SELECT Cart_Id,SUM(Menu_Price * Quantity) AS "Total",Customer_FirstName,Order_Date,Order_Status,orders.Order_Id, group_concat(concat(Menu_Name, '(', Quantity, ') - ', Menu_Price, ' ea')separator', ') as "items" FROM Orders 
   INNER JOIN ordersDetails ON Orders.Order_Id = ordersDetails.Order_Id
   INNER JOIN ordersItems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
-  INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id  
-  
-  WHERE Cart_Id = ?;`, [req.params.id], (error, results) => {
+  INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id
+  INNER JOIN customer ON customer.Customer_Id = orders.Customer_Id
+  WHERE Cart_Id = ? AND Order_Status = "InProgress"
+  group by Customer_FirstName, Order_Date, Order_Status, orders.Order_Id;`, [req.params.id], (error, results) => {
     /*  if (results == undefined){
        res.status(404).send("Order unavailable");
      } */
@@ -52,12 +52,11 @@ router.get('/orders/order/:id', function(req, res, next) {
     let connection = mysql.createConnection(dbCreds);
     connection.connect();
   
-    connection.query(`SELECT orders.Order_Id,Order_Total,Customer_Id,Order_Date,Order_Status, Cart_Id, ordersitems.OrderItem_Id, Menu_Name, Menu_Price, Quantity FROM orders 
-    
+    connection.query(`SELECT DISTINCT orders.Order_Id,SUM(Menu_Price * Quantity) AS "Total",Customer_FirstName,Order_Date,Order_Status, Cart_Id, group_concat(concat(Menu_Name, '(', Quantity, ') - ', Menu_Price, ' ea')SEPARATOR', ') as "items" FROM orders 
     INNER JOIN ordersdetails ON orders.Order_Id = ordersdetails.Order_Id
     INNER JOIN ordersitems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
-    INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id  
-    
+    INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id 
+    INNER JOIN customer ON customer.Customer_Id = orders.Customer_Id
     WHERE orders.Order_Id = ?;`,[req.params.id],  (error, results) =>{
   
       if (results.length === 0) {
