@@ -18,7 +18,7 @@ import OrderEntry from './OrderEntry.js';
         this.setState({
             // this is the result of pulling vendor/orders/cart/3
             orders:[
-                {
+                /*{
                 "Cart_Id": 3,
                 "Total": "35.94",
                 "Customer_FirstName": "Nihal",
@@ -26,12 +26,12 @@ import OrderEntry from './OrderEntry.js';
                 "Order_Status": "InProgress",
                 "Order_Id": 3,
                 "items": "Chicago Dog(3) - 9.99 ea, Coke(3) - 1.99 ea"
-                }
+                } */
                 ]
         });
     }
 
-    /* componentDidMount () {
+    componentDidMount () {
         let test = fetch("http://localhost:3000/vendor/orders/cart/3")
         .then((results) => {
             return results.json();
@@ -42,8 +42,8 @@ import OrderEntry from './OrderEntry.js';
             });
         
         })
-        console.log(this.state.orders); /* array is 0, darnit 
-    } */
+        console.log(this.state.orders);
+    } 
     
 
         render() {
