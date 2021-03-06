@@ -7,7 +7,7 @@ var router = express.Router();
 //CUSTOMER - get full cart details when customer selects a cart (from summary modal)
 router.get('/cart/:id', function (req, res, next) {
 
-  let getCartDetails = `SELECT Cart_Id,Menu_Id,Employee_FirstName,Cart_Location,Menu_Name,Menu_Description,Menu_Price FROM employees e JOIN carts c
+  let getCartDetails = `SELECT Cart_Id,Menu_Id,Employee_FirstName,Cart_Location,Latitude,longitude,Menu_Name,Menu_Description,Menu_Price FROM employees e JOIN carts c
   USING(Employee_id )
   JOIN cartmenus cm
   USING(Cart_Id)
