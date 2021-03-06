@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
 import '../index.css';
 
-class OrderEntry extends Component {
-/* function OrderEntry ({ orderid, custname, items, total }) { */
-    constructor(props) {
-        super(props);
-        this.state = {
-          orderid: this.props.order.Order_Id,
-          items: this.props.order.items,
-          name: this.props.order.Customer_FirstName,
-          total: this.props.order.Total
 
-        }
-    }
-    render() {
+function OrderEntry ({order}) {
+    
     return (
         
         <div className="order">
@@ -21,18 +11,18 @@ class OrderEntry extends Component {
             {/* <div className="userimg">User Img</div>{ {float: left;} */}
            
             <div className="orderdetails">
-                <h3>Order # {this.state.orderid}</h3>
-                <p>{this.state.name}</p>
-                <p>{this.state.items}{/*list all items from orderitems for order_id */}</p>
+                <h3>Order # {order.Order_Id}</h3>
+                <p>{order.Customer_FirstName}</p>
+                <p>{order.items}{/*list all items from orderitems for order_id */}</p>
             </div>
             <div className="ordertotal"> {/* float:right*/}
                 <h3>Total Due:</h3>
-                <p>{this.state.total}{/*total of all items in order*/}</p>
+                <p>{order.Total}{/*total of all items in order*/}</p>
             </div>
 
         </div>
     );
 }
-}
+
 
 export default OrderEntry;

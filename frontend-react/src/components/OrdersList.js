@@ -40,9 +40,7 @@ import OrderEntry from './OrderEntry.js';
             this.setState({
                 orders: myJson
             });
-        
         })
-        console.log(this.state.orders);
     } 
     
 
