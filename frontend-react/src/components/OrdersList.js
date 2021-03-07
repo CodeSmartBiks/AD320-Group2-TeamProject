@@ -14,25 +14,10 @@ import OrderEntry from './OrderEntry.js';
         }
     }
      
-    componentDidMount() {
-        this.setState({
-            // this is the result of pulling vendor/orders/cart/3
-            orders:[
-                /*{
-                "Cart_Id": 3,
-                "Total": "35.94",
-                "Customer_FirstName": "Nihal",
-                "Order_Date": "2021-02-13T08:00:00.000Z",
-                "Order_Status": "InProgress",
-                "Order_Id": 3,
-                "items": "Chicago Dog(3) - 9.99 ea, Coke(3) - 1.99 ea"
-                } */
-                ]
-        });
-    }
+   // Function setOrderDone
 
     componentDidMount () {
-        let test = fetch("http://localhost:3000/vendor/orders/cart/3")
+        let test = fetch("http://localhost:3000/vendor/orders/cart/3?Order_Status=Done")
         .then((results) => {
             return results.json();
         }).then((myJson) => {
@@ -52,8 +37,8 @@ import OrderEntry from './OrderEntry.js';
             });
         return (
             <div>
-            {OrderList}
-        </div>
+                {OrderList}
+            </div>
             )
         
         

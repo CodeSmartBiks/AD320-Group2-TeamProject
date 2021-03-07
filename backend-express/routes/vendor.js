@@ -16,6 +16,8 @@ router.get('/', function(req, res, next) {
    ** for vendors, but duplicate this route for an admin view?   **
    ** Will also need to add more sample data for orders to DB of **
    ** multiple done, in progress for each cart.                  ** */
+
+   //?Order_Status=InProgress - req.query.Order_Status
 router.get('/orders/cart/:id', function (req, res, next) {
 
   let connection = mysql.createConnection(dbCreds);
