@@ -17,7 +17,7 @@ import OrderEntry from './OrderEntry.js';
    // Function setOrderDone
 
     componentDidMount () {
-        let test = fetch("http://localhost:3000/vendor/orders/cart/3?Order_Status=Done")
+        let test = fetch("http://localhost:3000/vendor/orders/cart/3/?Order_Status=InProgress")
         .then((results) => {
             return results.json();
         }).then((myJson) => {
@@ -25,11 +25,13 @@ import OrderEntry from './OrderEntry.js';
             this.setState({
                 orders: myJson
             });
+            
         })
     } 
     
 
         render() {
+            
             const OrderList = this.state.orders.map(order => {
                 /*return <OrderTest order={order} id={order.id} />; */
 

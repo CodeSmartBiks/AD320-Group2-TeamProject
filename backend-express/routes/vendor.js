@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
    ** multiple done, in progress for each cart.                  ** */
 
    //?Order_Status=InProgress - req.query.Order_Status
-router.get('/orders/cart/:id', function (req, res, next) {
+router.get('/orders/cart/:id?Order_Status=?', function (req, res, next) {
 
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
@@ -28,14 +28,15 @@ router.get('/orders/cart/:id', function (req, res, next) {
   INNER JOIN ordersItems ON ordersdetails.OrderItem_Id = ordersitems.OrderItem_Id
   INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id
   INNER JOIN customer ON customer.Customer_Id = orders.Customer_Id
-  WHERE Cart_Id = ? AND Order_Status = "InProgress"
-  group by Customer_FirstName, Order_Date, Order_Status, orders.Order_Id;`, [req.params.id], (error, results) => {
+  WHERE Cart_Id = ? AND Order_Status= ?
+  group by Customer_FirstName, Order_Date, Order_Status, orders.Order_Id;`,[req.params.id],[req.query.Order_Status], (error, results) => {
     /*  if (results == undefined){
        res.status(404).send("Order unavailable");
      } */
 
     if (error) {
       res.send(500);
+      console.log(req.query.Order_Status);
     }
     else if (error) {
       res.sendStatus(500);
