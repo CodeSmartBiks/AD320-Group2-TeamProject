@@ -5,7 +5,7 @@ import '../Nav.css';
 function CompOrderList  () {
 
     return (
-        <div>
+        <div className="completed">
             
             <h2 className="placeholder">Completed Orders</h2>
         </div>
