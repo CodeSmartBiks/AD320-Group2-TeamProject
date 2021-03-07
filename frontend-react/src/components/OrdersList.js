@@ -30,8 +30,7 @@ import OrderEntry from './OrderEntry.js';
     } 
     
 
-        render() {
-            
+        render() { 
             const OrderList = this.state.orders.map(order => {
                 /*return <OrderTest order={order} id={order.id} />; */
 
