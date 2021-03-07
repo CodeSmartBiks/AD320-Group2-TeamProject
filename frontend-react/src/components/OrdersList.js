@@ -17,7 +17,7 @@ import OrderEntry from './OrderEntry.js';
    // Function setOrderDone
 
     componentDidMount () {
-        let test = fetch("http://localhost:3000/vendor/orders/cart/3/?Order_Status=InProgress")
+        let test = fetch("http://localhost:3000/vendor/orders/cart/3?Order_Status=Done")
         .then((results) => {
             return results.json();
         }).then((myJson) => {

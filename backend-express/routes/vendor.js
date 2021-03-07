@@ -10,15 +10,15 @@ router.get('/', function(req, res, next) {
 
 
 
-/* VENDOR - API GET path for seeing all current orders for a single cart */
-/* ** MAY NEED TO ADD "DONE" VS. "IN PROGRESS" TO WHERE FILTER!  ** 
-   ** adjust api path to be /orders/done/:id and /orders/inc/:id **
-   ** for vendors, but duplicate this route for an admin view?   **
-   ** Will also need to add more sample data for orders to DB of **
-   ** multiple done, in progress for each cart.                  ** */
+/* VENDOR - API GET path for seeing current orders (InProgress or Done) for a single cart */
+/*  Added the Order_Status to the WHERE conditional, and included a 
+    req.query.Order_Status=? to the sql statement, and included
+    req.query.Order_Status to the array of conditional statements.
 
-   //?Order_Status=InProgress - req.query.Order_Status
-router.get('/orders/cart/:id?Order_Status=?', function (req, res, next) {
+    Fetch URL provides the req.query to determine if the GET api
+    is looking for "InProgress" orders or "Done" orders.                */
+   
+router.get('/orders/cart/:id', function (req, res, next) {
 
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
@@ -29,10 +29,7 @@ router.get('/orders/cart/:id?Order_Status=?', function (req, res, next) {
   INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id
   INNER JOIN customer ON customer.Customer_Id = orders.Customer_Id
   WHERE Cart_Id = ? AND Order_Status= ?
-  group by Customer_FirstName, Order_Date, Order_Status, orders.Order_Id;`,[req.params.id],[req.query.Order_Status], (error, results) => {
-    /*  if (results == undefined){
-       res.status(404).send("Order unavailable");
-     } */
+  group by Customer_FirstName, Order_Date, Order_Status, orders.Order_Id;`,[req.params.id,req.query.Order_Status], (error, results) => {
 
     if (error) {
       res.send(500);
