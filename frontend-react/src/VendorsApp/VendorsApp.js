@@ -1,29 +1,32 @@
-
-
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import VendorSettings from './VendorSettings'
 
 import '../index.css';
 import '../Nav.css';
 import Header from'../components/Header';
 import VendorMenu from './VendorMenu';
+import MenuList from './MenuList';
+import React, { Component } from 'react';
+import MenuDetail from './MenuDetail';
+import MenuPanel from './MenuPanel';
+import './Toggle.css'
+
+//function VendorsApp() {
+
+class VendorsApp extends React.Component {
+    constructor(props){
+    super(props);
+    }
 
 
-
-
-function VendorsApp () {
-
+    render() {
     return (
         <div>
             <Header />
-            <h2 className="placeholder">VendorsApp Container</h2>
-            <VendorMenu />
-
-            
+            <MenuPanel/>                    
         </div>
-    )
+    );
 }
-/* The rendering didnt work for the vendor settings */
-//ReactDOM.render(<VendorSettings />, document.getElementById('root'));
-
-
-  
+}
 export default VendorsApp;
