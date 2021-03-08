@@ -104,21 +104,17 @@ router.get('/menus/cart/:id', function (req, res, next) {
 router.put('/carts/:id', (req, res) => {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
-
-  let mySQLQuery = `UPDATE Carts SET Longitude = '${req.body.Longitude}' WHERE Cart_Id = ${req.params.id}`;
-  try {
-    connection.query(mySQLQuery, (error, results) => {
+  connection.query(`UPDATE Carts SET Cart_Location=?, Cart_Availability=?,Latitude=?, Longitude =? 
+   WHERE Cart_Id = ?`, [req.body.Cart_Location,req.body.Cart_Availability, req.body.Latitude, req.body.Longitude, `${req.params.id}`],
+ (error, results) => {
       if (error) {
+        console.log(error)
         res.send(500);
       }
       res.status(201).send(results);
     })
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
 
-  Connection.end();
+  connection.end();
 });
 
 module.exports = router;
