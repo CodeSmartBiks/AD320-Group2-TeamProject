@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
 
     Fetch URL provides the req.query to determine if the GET api
     is looking for "InProgress" orders or "Done" orders.                */
-   
+
 router.get('/orders/cart/:id', function (req, res, next) {
 
   let connection = mysql.createConnection(dbCreds);
@@ -30,7 +30,7 @@ router.get('/orders/cart/:id', function (req, res, next) {
   INNER JOIN menu ON menu.Menu_Id = ordersitems.Menu_Id
   INNER JOIN customer ON customer.Customer_Id = orders.Customer_Id
   WHERE Cart_Id = ? AND Order_Status= ?
-  group by Customer_FirstName, Order_Date, Order_Status, orders.Order_Id;`,[req.params.id,req.query.Order_Status], (error, results) => {
+  group by Customer_FirstName, Order_Date, Order_Status, orders.Order_Id;`, [req.params.id, req.query.Order_Status], (error, results) => {
 
     if (error) {
       res.send(500);
@@ -101,23 +101,24 @@ router.get('/menus/cart/:id', function (req, res, next) {
 });
 
 //Issue 33 PUT endpoint to update cart availability
-router.put('/carts/:id',(req, res) =>{
+router.put('/carts/:id', (req, res) => {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
-  let longitude= '${req.body.Longitude}';
-  let id='${req.params.id}';
 
-
-   let mySQLQuery = `UPDATE Carts SET Longitude = ${longitude} WHERE Cart_Id = ${id}`;
-   Connection.Query(mySQLQuery,(error, results) => {
-     
-      if(error) {
-         res.send(500);
+  let mySQLQuery = `UPDATE Carts SET Longitude = '${req.body.Longitude}' WHERE Cart_Id = ${req.params.id}`;
+  try {
+    connection.query(mySQLQuery, (error, results) => {
+      if (error) {
+        res.send(500);
       }
       res.status(201).send(results);
-      })
+    })
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 
-   Connection.end();
+  Connection.end();
 });
 
 module.exports = router;
