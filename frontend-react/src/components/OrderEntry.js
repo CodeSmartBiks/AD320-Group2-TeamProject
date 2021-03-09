@@ -6,7 +6,7 @@ function OrderEntry ({order, orderDone}) {
     
     return (
         
-        <div className="order" >
+        <div className="order" onDoubleClick={() => orderDone(order.Order_Id)} >
             <img className="userimg" src ={`${window.location.origin}/user-icon.jpg`} />
             {/* <div className="userimg">User Img</div>{ {float: left;} */}
            
@@ -15,7 +15,7 @@ function OrderEntry ({order, orderDone}) {
                 <p>{order.Customer_FirstName}</p>
                 <p>{order.items}{/*list all items from orderitems for order_id */}</p>
             </div>
-            <div className="ordertotal" onDoubleClick={() => orderDone(order.Order_Id)}> {/* float:right*/}
+            <div className="ordertotal" > {/* float:right*/}
                 <h3>Total Due:</h3>
                 <p>{order.Total}{/*total of all items in order*/}</p>
             </div>
