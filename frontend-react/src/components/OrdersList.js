@@ -11,7 +11,6 @@ import OrderEntry from './OrderEntry.js';
 
         this.state = {
             orders: [],
-            status: "InProgress",
         };
 
         //this.orderDone = this.orderDone.bind(this);
@@ -21,23 +20,35 @@ import OrderEntry from './OrderEntry.js';
    //   If this.state.status = "Done", send put to db to change Order_Status in DB?
    //      onDoubleClick => this.setState({status: Done})
     
-   orderDone (id) {
-       //this.setState({
-       //    status: "Done"
-       //});
-       fetch("http://localhost:3000/vendor/orders/cart/3", {
-           method: 'PUT',
-           body: JSON.stringify({
-               Order_Status: 'Done',
-               Order_Id: id,
-           })
-       }).then (response => {
-            return response.json()
-       }).then ((json) => {
-           console.log("DB Updated?", json);
-       })
-   }
-
+    orderDone (id) {
+    /* 
+       this.setState({
+        status: "Done"
+        });
+    } else {
+        this.setState({
+            status: "InProgress"
+        });
+    // }  */      
+            fetch("http://localhost:3000/vendor/orders/cart/3", {
+                method: 'PUT',
+                body: JSON.stringify({
+                    Order_Status: "Done",
+                    Order_Id: id,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then (response => {
+                console.log(response);
+                return response.json()
+            }).then ((json) => {
+                console.log("DB Updated?", json);
+                this.componentDidMount();
+            })
+    
+            
+    }
     componentDidMount () {
         let test = fetch("http://localhost:3000/vendor/orders/cart/3?Order_Status=InProgress")
         .then((results) => {
@@ -64,7 +75,6 @@ import OrderEntry from './OrderEntry.js';
                     {OrderList}
 
                     {/* This is throwing errors */}
-                    <h2>{this.state.orders.Total}</h2>
                 </div>
             )
         }    
