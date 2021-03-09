@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { put } from '../../../backend-express/routes/vendor';
+
 import '../index.css';
 import '../Nav.css';
 import OrderEntry from './OrderEntry.js';
@@ -12,18 +12,20 @@ import OrderEntry from './OrderEntry.js';
         this.state = {
             orders: [],
             status: "InProgress",
-        }
+        };
+
+        this.orderDone = this.orderDone.bind(this);
     }
      
    // Function setOrderDone
    //   If this.state.status = "Done", send put to db to change Order_Status in DB?
    //      onDoubleClick => this.setState({status: Done})
-
+    
    orderDone () {
        //this.setState({
        //    status: "Done"
        //});
-       fetch('http:localhost:3000/vendor/orders/cart/3', {
+       fetch("http://localhost:3000/vendor/orders/cart/3", {
            method: 'PUT',
            body: JSON.stringify({
                Order_Status: 'Done',
