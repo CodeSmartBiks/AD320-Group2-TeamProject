@@ -14,14 +14,14 @@ import OrderEntry from './OrderEntry.js';
             status: "InProgress",
         };
 
-        this.orderDone = this.orderDone.bind(this);
+        //this.orderDone = this.orderDone.bind(this);
     }
      
    // Function setOrderDone
    //   If this.state.status = "Done", send put to db to change Order_Status in DB?
    //      onDoubleClick => this.setState({status: Done})
     
-   orderDone () {
+   orderDone (id) {
        //this.setState({
        //    status: "Done"
        //});
@@ -29,8 +29,12 @@ import OrderEntry from './OrderEntry.js';
            method: 'PUT',
            body: JSON.stringify({
                Order_Status: 'Done',
-               Order_Id: 'HOW TO REFERENCE THE ORDER_ID THIS EVENT HAPPENS ON??? Somehow to the OrderEntry component its on??'
+               Order_Id: id,
            })
+       }).then (response => {
+            return response.json()
+       }).then ((json) => {
+           console.log("DB Updated?", json);
        })
    }
 
@@ -51,7 +55,7 @@ import OrderEntry from './OrderEntry.js';
 
         render() { 
             const OrderList = this.state.orders.map(order => {
-                return <OrderEntry key={order.Order_Id} order={order} orderDone={this.orderDone()} />;
+                return <OrderEntry key={order.Order_Id} order={order} orderDone={this.orderDone.bind(this)} />;
                 //assuming this even works-->would "orderDone" be passed as a prop to OrderEntry? 
                 //  adding DoubleClick functionality there...?
             });

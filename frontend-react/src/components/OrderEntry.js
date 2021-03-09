@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import '../index.css';
 
 
-function OrderEntry ({order}) {
+function OrderEntry ({order, orderDone}) {
     
     return (
         
-        <div className="order">
+        <div className="order" onDoubleClick={() => orderDone(order.Order_Id)}>
             <img className="userimg" src ={`${window.location.origin}/user-icon.jpg`} />
             {/* <div className="userimg">User Img</div>{ {float: left;} */}
            
