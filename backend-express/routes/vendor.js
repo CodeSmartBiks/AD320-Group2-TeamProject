@@ -111,7 +111,7 @@ router.put('/carts/:id', (req, res) => {
  (error, results) => {
       if (error) {
         console.log(error)
-        res.send(500);
+        res.sendStatus(500);
       }
       res.status(201).send(results);
     })
