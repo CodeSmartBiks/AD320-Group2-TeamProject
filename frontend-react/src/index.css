@@ -202,6 +202,17 @@ button {
   height: 70%;
   border: 1px solid black;
   border-radius: 25px;
+  text-align: center;
+}
+
+.completed .ordertotal {
+  background-color:darkgreen;
+  padding: 1em;
+  width: 15%;
+  height: 70%;
+  border: 1px solid black;
+  border-radius: 25px;
+  text-align: center;
 }
 
 /* END ORDER ENTRY SAMPLE CSS */ 

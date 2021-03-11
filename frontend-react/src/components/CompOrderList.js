@@ -1,15 +1,51 @@
-//import Header from'./Header ';
+import React from 'react';
+import { Component } from 'react';
 import '../index.css';
 import '../Nav.css';
+import OrderTest from './OrderTest.js';
+import OrderEntry from './OrderEntry.js';
 
-function CompOrderList  () {
+ class CompOrderList extends React.Component {
+    constructor(props) {
+        super(props); 
 
-    return (
-        <div>
+        this.state = {
+            orders: [],
+        }
+    }
+     
+   // Function setOrderDone
+
+    componentDidMount () {
+        let test = fetch("http://localhost:3000/vendor/orders/cart/3?Order_Status=Done")
+        .then((results) => {
+            return results.json();
+        }).then((myJson) => {
+            console.log("FetchResolved", myJson);
+            this.setState({
+                orders: myJson
+            });
+        })
+    } 
+    
+
+        render() {
+            const OrderList = this.state.orders.map(order => {
+                /*return <OrderTest order={order} id={order.id} />; */
+
+                return <OrderEntry key={order.Order_Id} order={order}  />;
+            });
+        return (
+            <div className="completed">
+                {OrderList}
+            </div>
+            )  
+             
+     
             
-            <h2 className="placeholder">Completed Orders</h2>
-        </div>
-    )
-}
+        }    
+    
+}  
+
 
 export default CompOrderList;

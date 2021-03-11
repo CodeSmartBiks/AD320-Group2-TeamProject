@@ -7,6 +7,7 @@ import VendorMenu from './VendorMenu';
 
 
 class VendorsApp extends React.Component {
+
     render() {
     return (
         <div>
@@ -19,4 +20,5 @@ class VendorsApp extends React.Component {
     )
 }
 }
+
 export default VendorsApp;
