@@ -3,6 +3,29 @@ let mysql = require('mysql2');
 let dbCreds = require("../../../dbCreds.json");
 var router = express.Router();
 
+// see all available carts on the map
+router.get('/map', function (req, res) {
+  //let cartInfo = `Select* From Carts where Cart_Availability = 'Y';`;
+  let cartInfo = `Select carts.Cart_Id,Cart_Name,Cart_Location,Latitude, Longitude, group_CONCAT(concat(Menu_Name) separator', ') AS "Items" 
+  From Carts
+  Inner join cartmenus on carts.Cart_Id = cartmenus.cart_id
+  Inner join menu on cartmenus.menu_id = menu.menu_id  
+  where carts.Cart_Availability = 'Y' AND cartmenus.available = 'Y'
+  group by carts.Cart_Id,Cart_Name, Cart_Location, Latitude, Longitude;`
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query(cartInfo, (error, results) => {
+
+    if(error){
+      res.send(500);
+    }
+    else {
+      res.send(results);
+    }
+})
+connection.end();
+});
 
 //CUSTOMER - get full cart details when customer selects a cart (from summary modal)
 router.get('/cart/:id', function (req, res, next) {

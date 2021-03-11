@@ -46,6 +46,43 @@ h1 {
   padding: 0;
 }
 
+.infowindow {
+  display:block;
+  font-family: 'Monda', sans-serif;
+  background-color: rgb(192, 165, 12);
+  padding: 20px;
+  margin: 20px;
+  min-width: 100px;
+}
+
+.infowindow h2 {
+  background-color: rgb(212, 61, 35);
+  margin-bottom: .25em;
+}
+
+.infowindow h5 {
+  text-decoration: underline;
+}
+
+.infowindow p {
+  margin:.25em;
+  font-family: 'Monda', sans-serif;
+}
+
+.infowindow button {
+  clear: both;
+  background-color:rgba(22, 63, 5, 0.123);
+  color: whitesmoke;
+  border-radius: 30px;
+  border: solid .25em #1444;
+  padding: 0.5em 4em;
+  /* margin: 1em 0em 1em 1em; */
+  margin: 0 auto;
+  display: block;
+  text-align:center;
+  font-family: 'Monda', sans-serif;
+}
+
 .placeholder {
   text-align: center;
 }
