@@ -36,6 +36,16 @@ h1 {
   /*background-color: steelblue; */
 }
 
+.maph2 {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: rgb(212, 61, 35);
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+}
+
 .placeholder {
   text-align: center;
 }
