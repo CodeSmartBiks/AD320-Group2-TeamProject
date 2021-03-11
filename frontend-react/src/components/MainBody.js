@@ -7,8 +7,8 @@ function MainBody () {
 
         return (
         <div>
-          {/* <Map/> */}
-          <MapTest/>
+          <Map/>
+          {/* MapTest */}
         </div> 
         ) 
     }
