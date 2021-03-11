@@ -1,7 +1,7 @@
 import MenuList from './MenuList.js';
 import React, {Component} from 'react'
 import MenuListItems from './MenuListItems'
-//import MenuDetail from './MenuDetail'
+// import MenuDetail from './MenuDetail'
 
 class MenuPanel extends Component {
     constructor(props) {
