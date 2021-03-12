@@ -13,23 +13,11 @@ import OrderEntry from './OrderEntry.js';
             orders: [],
         };
 
-        //this.orderDone = this.orderDone.bind(this);
     }
-     
-   // Function setOrderDone
-   //   If this.state.status = "Done", send put to db to change Order_Status in DB?
-   //      onDoubleClick => this.setState({status: Done})
+
     
     orderDone (id) {
-    /* 
-       this.setState({
-        status: "Done"
-        });
-    } else {
-        this.setState({
-            status: "InProgress"
-        });
-    // }  */      
+    
             fetch("http://localhost:3000/vendor/orders/cart/3", {
                 method: 'PUT',
                 body: JSON.stringify({
@@ -58,7 +46,6 @@ import OrderEntry from './OrderEntry.js';
             this.setState({
                 orders: myJson,   
             });
-         // Is there a way to reference part of the myJson return? myJson.Total? 
           
         })
     } 
@@ -67,14 +54,11 @@ import OrderEntry from './OrderEntry.js';
         render() { 
             const OrderList = this.state.orders.map(order => {
                 return <OrderEntry key={order.Order_Id} order={order} orderDone={this.orderDone.bind(this)} />;
-                //assuming this even works-->would "orderDone" be passed as a prop to OrderEntry? 
-                //  adding DoubleClick functionality there...?
+
             });
             return (
                 <div>
                     {OrderList}
-
-                    {/* This is throwing errors */}
                 </div>
             )
         }    
