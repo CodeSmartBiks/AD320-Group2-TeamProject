@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Map from "./Map";
-import MapTest from './MapTest';
+// import MapTest from './MapTest';
 
 
 function MainBody () {
