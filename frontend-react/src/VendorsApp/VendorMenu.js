@@ -7,7 +7,7 @@ import {
 import CompOrderList from "../components/CompOrderList";
 import OrdersList from "../components/OrdersList";
 import VendorSettings from "./VendorSettings";
-import VendorMenuItems from "../components/VendorMenuItems";
+import MenuPanel from "./MenuPanel";
 
 
 function VendorMenu () {
@@ -42,7 +42,7 @@ function VendorMenu () {
                 </Route>
 
                 <Route path="/vendor/MenuSettings">
-                  <VendorMenuItems />
+                  <MenuPanel />
                 </Route>
 
                 <Route path="/vendor/CartSettings">

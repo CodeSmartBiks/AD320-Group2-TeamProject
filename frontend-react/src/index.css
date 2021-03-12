@@ -30,7 +30,7 @@ header img {
 
 h1 {
   font-weight: normal;
-  width: 70%;
+  width: 100%;
   margin: auto;
   font-size: 5vw;
   /*background-color: steelblue; */
@@ -62,6 +62,21 @@ h1 {
   padding: 0.5em 1em;
   /* margin: 1em 0em 1em 1em; */
   margin-top: 50px;
+  display: inline-block;
+  margin-left: 100px;
+  font-family: 'Calibri', sans-serif;
+  font-size: 1.5em;
+  
+}
+
+.MenuList{
+  clear: both;
+  background-color:whitesmoke;
+  border-radius: 10px;
+  border: thin .25em #1444;
+  padding: 0.5em 1em;
+  /* margin: 1em 0em 1em 1em; */
+  margin: 20px;
   display: inline-block;
   margin-left: 100px;
   font-family: 'Calibri', sans-serif;
