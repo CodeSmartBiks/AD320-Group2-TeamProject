@@ -11,11 +11,32 @@ import OrderEntry from './OrderEntry.js';
 
         this.state = {
             orders: [],
-        }
-    }
-     
-   // Function setOrderDone
+        };
 
+    }
+
+    
+    orderDone (id) {
+       
+            fetch("http://localhost:3000/vendor/orders/cart/3", {
+                method: 'PUT',
+                body: JSON.stringify({
+                    Order_Status: "InProgress",
+                    Order_Id: id,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then (response => {
+                console.log(response);
+                return response.json()
+            }).then ((json) => {
+                console.log("DB Updated?", json);
+                this.componentDidMount();
+            })
+    
+            
+    }
     componentDidMount () {
         let test = fetch("http://localhost:3000/vendor/orders/cart/3?Order_Status=Done")
         .then((results) => {
@@ -31,9 +52,8 @@ import OrderEntry from './OrderEntry.js';
 
         render() {
             const OrderList = this.state.orders.map(order => {
-                /*return <OrderTest order={order} id={order.id} />; */
 
-                return <OrderEntry key={order.Order_Id} order={order}  />;
+                return <OrderEntry key={order.Order_Id} order={order} orderDone={this.orderDone.bind(this)} />;
             });
         return (
             <div className="completed">

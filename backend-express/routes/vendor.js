@@ -119,4 +119,21 @@ router.put('/carts/:id', (req, res) => {
   connection.end();
 });
 
+
+//update order status
+router.put('/orders/cart/:id', (req, res) => {
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query(`UPDATE Orders SET Order_Status = ? WHERE Cart_Id=? AND Order_Id=?`, [req.body.Order_Status, req.params.id, req.body.Order_Id],
+  (error, results) => {
+    if (error) {
+      console.log(error)
+      res.sendStatus(500);
+    }
+    res.status(201).send(results);
+  })
+  connection.end();
+})
+
 module.exports = router;
