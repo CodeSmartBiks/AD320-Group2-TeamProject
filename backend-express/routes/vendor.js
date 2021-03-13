@@ -136,4 +136,24 @@ router.put('/orders/cart/:id', (req, res) => {
   connection.end();
 })
 
+
+//Issue 90 PUT endpoint to update cart menus item
+router.put('/cartMenus/:id', (req, res) => {
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+  
+  //updating the cart menus details information
+  connection.query(`UPDATE  CartMenus SET Available = ? 
+   WHERE CartMenus_Id = ?`, [req.body.Available,req.params.id],
+ (error, results) => {
+      if (error) {
+        console.log(error)
+        res.sendStatus(500);
+      }
+      res.status(201).send(results);
+    })
+
+  connection.end();
+});
+
 module.exports = router;
