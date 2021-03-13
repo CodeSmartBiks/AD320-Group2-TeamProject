@@ -1,10 +1,26 @@
 .switch {
     position:relative;
-    margin-right: 100px;
+    margin-right: 87px;
     width: 60px;
     height: 34px;
-    outline: none;
+    outline:none;
     float:right;
+    margin-bottom: 5px;
+  }
+  .switch1 {
+    position:relative;
+    margin-right: 87px;
+    width: 60px;
+    height: 34px;
+    outline:none;
+    margin-bottom: 5px;
+    display: inline-block;
+    margin-left: 140px;
+  }
+  .switch1 input {
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
   }
   .switch input {
     position: absolute;

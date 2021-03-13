@@ -108,12 +108,62 @@ h1 {
   border: thin .25em #1444;
   padding: 0.5em 1em;
   /* margin: 1em 0em 1em 1em; */
-  margin-top: 50px;
+  margin-top: 60px;
   display: inline-block;
   margin-left: 100px;
   font-family: 'Calibri', sans-serif;
   font-size: 1.5em;
   
+}
+/* .Longitude {
+  position: relative;
+  clear: both;
+  background-color:whitesmoke;
+  border-radius: 10px;
+  border: thin .25em #1444;
+  padding: 0.2em 0.5em;
+  margin-top: 60px;
+  display: inline-block;
+  margin-left: 100px;
+  font-family: 'Calibri', sans-serif;
+  font-size: 1.3em;
+  
+} */
+
+
+.form-control {
+  margin: 20px 0;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-left: 100px;
+  margin-top: 50px;;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 60%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
 }
 
 .MenuList{
@@ -138,7 +188,7 @@ h1 {
   padding: 0.5em 1em;
   /* margin: 1em 0em 1em 1em; */
   display: block;
-  margin-top: 200px;
+  margin-top: 100px;
   text-align:center;
   font-family: 'Calibri', sans-serif;
   font-size: 1em;
