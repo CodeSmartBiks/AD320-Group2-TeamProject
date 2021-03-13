@@ -41,9 +41,7 @@ router.get('/orders/cart/:id', function (req, res, next) {
     } else {
       res.status(200).send(results);
     }
-
   })
-
   connection.end();
 });
 
