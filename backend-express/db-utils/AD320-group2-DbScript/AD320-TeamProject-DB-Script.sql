@@ -219,6 +219,45 @@ VALUES
 (1,1),  
 (2,2); 
 
+
+-- -----------------------------------------------------
+-- procedure addNewOrder
+-- -----------------------------------------------------
+
+USE `hotdogcarts`;
+DROP procedure IF EXISTS `hotdogcarts`.`addNewOrder`;
+
+DELIMITER $$
+USE `hotdogcarts`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addNewOrder`(
+Quantity int(11), Menu_Name varchar(50),Order_Total DECIMAL(10,2), Customer_Id int(11), Cart_Id int(11))
+BEGIN
+DECLARE numberO INT;
+      select ordersitems.OrderItem_Id into numberO from ordersitems
+            inner join menu ON
+            ordersitems.Menu_Id = menu.Menu_Id
+            where ordersitems.Quantity = Quantity AND menu.Menu_Name = Menu_Name;
+	INSERT INTO Orders
+      (Order_Total, Customer_Id, Order_Date, Order_Status, Cart_id)
+      VALUES
+      ( 
+        Order_Total,
+        Customer_Id, 
+        now(),
+        'InProgress',
+        Cart_Id
+      ); 
+        INSERT INTO OrdersDetails
+        (Order_Id, OrderItem_Id)
+        VALUES
+        ( 
+          LAST_INSERT_ID(),
+          numberO
+        );
+END$$
+
+DELIMITER ;
+
 /* Sample queries to test the data*/ 
 /*
 Select* From Menu;
