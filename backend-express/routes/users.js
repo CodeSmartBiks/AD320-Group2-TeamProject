@@ -111,7 +111,8 @@ router.put('/newOrder/cart/:id', function (req, res) {
           (select Menu_Id from menu
             where Menu_Name = ?))
         )`;
-  
+            /* the nested query for "Menu_id ="" at the end is where I get an error: "Column 'OrderItem_Id' cannot be null" */
+
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
@@ -126,7 +127,7 @@ router.put('/newOrder/cart/:id', function (req, res) {
         console.log(results[1]);
       }
     })
-    /*connection.end(); */
+    connection.end();
 });
 
 
