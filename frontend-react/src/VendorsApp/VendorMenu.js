@@ -6,8 +6,9 @@ import {
   } from "react-router-dom";
 import CompOrderList from "../components/CompOrderList";
 import OrdersList from "../components/OrdersList";
-import VendorSettings from "./VendorSettings";
+//import VendorSettings from "./VendorSettings";
 import MenuPanel from "./MenuPanel";
+import VendorSettingsOption from "./VendorSettingsOption";
 
 
 function VendorMenu () {
@@ -46,7 +47,7 @@ function VendorMenu () {
                 </Route>
 
                 <Route path="/vendor/CartSettings">
-                  <VendorSettings />
+                  <VendorSettingsOption />
                 </Route>
 
                 <Route path="/vendor">

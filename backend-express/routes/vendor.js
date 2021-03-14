@@ -157,11 +157,11 @@ router.put('/cartMenus/:id', (req, res) => {
 });
 
 /* Get fuction that gets all the cart information and will be used for cart availability option*/
-router.get('/carts/:id', function (req, res, next) {
+router.get('/carts/settings/:id', function (req, res, next) {
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
-  connection.query('SELECT * FROM Carts', (error, results, fields) => {
+  connection.query(`SELECT * FROM Carts WHERE Cart_Id = ?;`, [req.params.id], (error, results, fields) => {
     if (error) {
       res.send(500);
     }

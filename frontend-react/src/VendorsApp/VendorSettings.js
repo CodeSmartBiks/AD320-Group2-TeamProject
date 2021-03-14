@@ -8,40 +8,76 @@ class VendorSettings extends React.Component {
         super(props);
         this.state = {
             isChecked: props.isChecked || false,
+            isAvailable:'Y'|| 'N',
         };
 
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange() {
         this.setState({ isChecked: !this.state.isChecked })
+        this.setState({isAvailable: !this.state.isAvailable })
+        console.log(this.state.isAvailable)
+
+        // if(this.state.isChecked =='Y'){
+        //     this.setState({isChecked :'N'})
+        //  }
+        //  else if(this.state.isChecked =='N'){  
+        //     this.setState({isChecked :'Y'})   
+        //  }
     }
     render() {
         return (
+            // <div>
+            //     <form className='container'>
+            //         <label className='Availability'>Cart Availability</label>
+            //         <label className="switch1">
+            //             <input type="checkbox" value={this.state.isChecked} onChange={this.handleChange} />
+            //             <span className="slider"></span>
+            //         </label>
+            //         <label className='Location'>Set The Location</label>
+            //         <label className="switch1">
+            //             <input type="checkbox" value={this.state.isChecked} onChange={this.handleChange} />
+            //             <span className="slider"></span>
+            //         </label>
+            //         <div className='form-control'>
+            //             <label> Longitude</label>
+            //             <input type='text' placeholder='Enter Longitude Here'
+            //             />
+            //         </div>
+            //         <div className='form-control'>
+            //             <label> Latitude</label>
+            //             <input type='text' placeholder='Enter Latitude Here'
+            //             />
+            //         </div>
+            //         <button className='btn'> Update Cart </button>
+            //     </form>
+            // </div>
+
             <div>
-                <form className='container'>
+            <form className='container'>
                 <label className='Availability'>Cart Availability</label>
-                    <label className="switch1">
-                        <input type="checkbox" value={this.state.isChecked} onChange={this.handleChange} />
-                        <span className="slider"></span>
-                    </label>
-                    <label className='Location'>Set The Location</label>
-                    <label className="switch1">
-                        <input type="checkbox" value={this.state.isChecked} onChange={this.handleChange} />
-                        <span className="slider"></span>
-                    </label>
-                    <div className='form-control'>
-                <label> Longitude</label>
-                <input type='text' placeholder='Enter Longitude Here'
-                />
-            </div>
-            <div className='form-control'>
-                <label> Latitude</label>
-                <input type='text' placeholder='Enter Latitude Here'
-                />
-            </div>
-                    <button className='btn'> Update Cart </button> 
-                </form>
-            </div>
+                <label className="switch1">
+                    <input type="checkbox" value={{ischecked: this.state.ischecked, isAvailable: 'Y'}} onChange={this.handleChange} />
+                    <span className="slider"></span>
+                </label>
+                <label className='Location'>Set The Location</label>
+                <label className="switch1">
+                    <input type="checkbox" value={this.state.isChecked} onChange={this.handleChange} />
+                    <span className="slider"></span>
+                </label>
+                <div className='form-control'>
+                    <label> Longitude</label>
+                    <input type='text' placeholder='Enter Longitude Here'
+                    />
+                </div>
+                <div className='form-control'>
+                    <label> Latitude</label>
+                    <input type='text' placeholder='Enter Latitude Here'
+                    />
+                </div>
+                <button className='btn'> Update Cart </button>
+            </form>
+        </div>
         );
     }
 }
