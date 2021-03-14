@@ -116,6 +116,38 @@ h1 {
   
 }
 
+.wrapper-main {
+  background-color: white;
+  margin: 1em;
+}
+
+
+.main {
+  float:left;
+  width:60%;
+  background-color: white;
+}
+
+.aside {
+  float: right;
+  width:40%;
+}
+
+/* left and right unequal columns for menu*/
+.column {
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.left {
+  width:75%;
+}
+
+.right {
+  width:25%;
+}
+
 .MenuList{
   clear: both;
   background-color:whitesmoke;
@@ -275,8 +307,15 @@ button {
   }
 
   img.mobile {
-    display:none;  
-}
+    display:none;
+  }
+  .column {
+    flex: 1
+  }
+  .double-column {
+    flex: 2
+  }
+
 }
 
 /* TABLET */
