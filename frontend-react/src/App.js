@@ -5,7 +5,7 @@ import MainBody from './components/MainBody';
 import AdminsApp from './AdminApp/AdminApp';
 import VendorsApp from './VendorsApp/VendorsApp';
 import CustomersApp from './CustomersApp/CustomersApp';
-
+import MenuSelection from './CustomersApp/MenuSelection';
 
 import React, { Component } from 'react';
 import {
@@ -26,6 +26,10 @@ function App() {
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
         <Switch>
+        <Route path="/menu">
+            {/* menu selection component */}
+            <MenuSelection />
+          </Route>
           <Route path="/admin">
             {/* adminpage component */}
             <AdminsApp />
