@@ -88,35 +88,12 @@ router.get('/map/:id', function(req, res, next) {
 /* CUSTOMER - API PUT path for adding an order to the database for a cart */
 router.put('/newOrder/cart/:id', function (req, res) {
   let queries = 
-      `INSERT INTO Orders
-      (Order_Total, Customer_Id, Order_Date, Order_Status, Cart_id)
-      VALUES
-      ( 
-        ?,
-        ?, 
-        now(),
-        'InProgress',
-        '${req.params.id}'
-      ); 
-        INSERT INTO OrdersDetails
-        (Order_Id, OrderItem_Id)
-        VALUES
-        ( 
-          (select Order_Id from orders
-          where Cart_Id = '${req.params.id}'
-          order by Order_Date DESC
-          limit 1),
-          (select OrderItem_Id from ordersitems
-          where Quantity = ? AND Menu_Id = 
-          (select Menu_Id from menu
-            where Menu_Name = ?))
-        )`;
-            /* the nested query for "Menu_id ="" at the end is where I get an error: "Column 'OrderItem_Id' cannot be null" */
-
+      `CALL addNewOrder(?, ?, ?, ?, ${req.params.id}); `;
+      
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
 
-  connection.query(queries, [req.body.Order_Total, req.body.Customer_Id, req.params.id, req.body.Quantity, req.body.Menu_Name], (error, results) => {
+  connection.query(queries, [req.body.Quantity, req.body.Menu_Name, req.body.Order_Total, req.body.Customer_Id, req.params.id], (error, results) => {
       if (error) {
         console.log(error);
         res.sendStatus(500);
