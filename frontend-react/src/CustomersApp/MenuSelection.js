@@ -1,6 +1,7 @@
 //import MenuList from './MenuList'
 import '../App.css';
 import '../Nav.css';
+import '../index.css';
 import Header from'../components/Header';
 import React, {useState, useEffect} from 'react';
 import MenuItem from './MenuItem';
@@ -64,7 +65,7 @@ const MenuSelection = () => {
   return (
     <div>
         <Header/>
-        <div className="wrapper-main"></div>
+        <div className="wrapper-main">
         {/* <h3>Vendor: {menuList[0].Employee_FirstName}  |  Located at {menuList[0].Cart_Location}</h3> */}
         <div className="main">
         
@@ -72,12 +73,17 @@ const MenuSelection = () => {
                         {menuList.map((menuItem)=>(
                 <MenuItem key={menuItem.Menu_Id} menuItem={menuItem} addToBasket={addToBasket} />
               ))}
-          </div>
-          <div className="aside">
-              <div className="column-cart">
-            <Basket basketItems={basketItems} addToBasket={addToBasket}/></div></div>
-            <button onClick={() =>orderSend()}>Send Order</button>
+        </div>
+        <div className="aside">
+            <div className="column-cart">
+              <Basket basketItems={basketItems} addToBasket={addToBasket}/>
+            </div>
+        </div>
+            <div >
+              <button className="order-button" onClick={() =>orderSend()}>Send Order</button>
+            </div>
             
+      </div>
     </div>
 
   )

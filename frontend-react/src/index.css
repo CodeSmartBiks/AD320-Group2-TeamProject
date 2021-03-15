@@ -117,7 +117,7 @@ h1 {
 }
 
 .wrapper-main {
-  background-color: white;
+  
   margin: 1em;
 }
 
@@ -126,6 +126,7 @@ h1 {
   float:left;
   width:60%;
   background-color: white;
+  margin-bottom: 2em;
 }
 
 .aside {
@@ -146,6 +147,7 @@ h1 {
 
 .right {
   width:25%;
+  
 }
 
 .MenuList{
@@ -236,6 +238,11 @@ button {
   display: block;
   text-align:center;
   font-family: 'Calibri', sans-serif;
+}
+
+.order-button {
+  margin: 0 auto;
+  
 }
 
 /* OrderEntry Sample css */
@@ -335,7 +342,7 @@ button {
 
   .main {
     background-color: white;
-  width: 90%;
+  width: 100%;
   display: block;
   /* float:none; */
   margin: 0 auto;
@@ -346,7 +353,11 @@ button {
   padding: 5%;
   /*float:none; */
   margin: 0 auto;
-} */
+} 
+
+.left {
+  width: 60%;
+}
 
   h1 {
     line-height: 2em;
