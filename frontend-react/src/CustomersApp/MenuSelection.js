@@ -32,6 +32,7 @@ const MenuSelection = () => {
     setBasketItems([...basketItems, menuItem]);
   }
 
+
   const orderSend = () => {
     
     fetch("http://localhost:3000/users/newOrder/cart/3", {
@@ -51,7 +52,7 @@ const MenuSelection = () => {
         return response.json()
     }).then ((json) => {
         console.log("DB Updated?", json);
-        this.loadMenu();
+        //this.loadMenu();
     })
 
     
