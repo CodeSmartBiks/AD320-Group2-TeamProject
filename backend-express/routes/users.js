@@ -83,7 +83,29 @@ router.get('/map/:id', function(req, res, next) {
     })
   /* test comment */
     connection.end();
-})
+});
+
+/* CUSTOMER - API PUT path for adding an order to the database for a cart */
+router.put('/newOrder/cart/:id', function (req, res) {
+  let queries = 
+      `CALL addNewOrder(?, ?, ?, ?, ${req.params.id}); `;
+      
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query(queries, [req.body.Quantity, req.body.Menu_Name, req.body.Order_Total, req.body.Customer_Id, req.params.id], (error, results) => {
+      if (error) {
+        console.log(error);
+        res.sendStatus(500);
+      }
+      else {
+        res.status(201).send(results);
+        console.log(results[0]);
+        console.log(results[1]);
+      }
+    })
+    connection.end();
+});
 
 
 

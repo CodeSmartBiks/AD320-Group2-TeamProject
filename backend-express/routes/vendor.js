@@ -41,9 +41,7 @@ router.get('/orders/cart/:id', function (req, res, next) {
     } else {
       res.status(200).send(results);
     }
-
   })
-
   connection.end();
 });
 
@@ -152,6 +150,21 @@ router.put('/cartMenus/:id', (req, res) => {
       }
       res.status(201).send(results);
     })
+
+  connection.end();
+});
+
+/* Get fuction that gets all the cart information and will be used for cart availability option*/
+router.get('/carts/:id', function (req, res, next) {
+  let connection = mysql.createConnection(dbCreds);
+  connection.connect();
+
+  connection.query('SELECT * FROM Carts where Cart_Id = ?',[req.params.id], (error, results, fields) => {
+    if (error) {
+      res.send(500);
+    }
+    res.status(200).send(results);
+  })
 
   connection.end();
 });
