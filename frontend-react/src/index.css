@@ -116,6 +116,40 @@ h1 {
   
 }
 
+.wrapper-main {
+  
+  margin: 1em;
+}
+
+
+.main {
+  float:left;
+  width:60%;
+  background-color: white;
+  margin-bottom: 2em;
+}
+
+.aside {
+  float: right;
+  width:40%;
+}
+
+/* left and right unequal columns for menu*/
+.column {
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.left {
+  width:75%;
+}
+
+.right {
+  width:25%;
+  
+}
+
 .MenuList{
   clear: both;
   background-color:whitesmoke;
@@ -206,6 +240,11 @@ button {
   font-family: 'Calibri', sans-serif;
 }
 
+.order-button {
+  margin: 0 auto;
+  
+}
+
 /* OrderEntry Sample css */
 .order {
   background: #f4f4f4;
@@ -275,8 +314,15 @@ button {
   }
 
   img.mobile {
-    display:none;  
-}
+    display:none;
+  }
+  .column {
+    flex: 1
+  }
+  .double-column {
+    flex: 2
+  }
+
 }
 
 /* TABLET */
@@ -284,6 +330,8 @@ button {
   img.mobile {
     display:none;  
 }
+
+
 }
 
 /* BIG PHONE */
@@ -291,6 +339,25 @@ button {
   img.desktop {
     display:none;  
   }
+
+  .main {
+    background-color: white;
+  width: 100%;
+  display: block;
+  /* float:none; */
+  margin: 0 auto;
+}
+.aside {
+  width: 90%;
+  display: block;
+  padding: 5%;
+  /*float:none; */
+  margin: 0 auto;
+} 
+
+.left {
+  width: 60%;
+}
 
   h1 {
     line-height: 2em;
