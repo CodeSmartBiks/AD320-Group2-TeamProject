@@ -8,6 +8,7 @@ class VendorSettings extends React.Component {
         super(props);
         this.state = {
             isChecked: props.isChecked || false,
+            settings: []
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -15,6 +16,21 @@ class VendorSettings extends React.Component {
     handleChange() {
         this.setState({ isChecked: !this.state.isChecked })
     }
+
+    componentDidMount () {
+        let test = fetch("http://localhost:3000/vendor//carts/3")
+        .then((results) => {
+            return results.json();
+        }).then((myJson) => {
+            console.log("FetchResolved", myJson);
+            this.setState({
+                settings: myJson,
+                   
+            });
+          
+        })
+    } 
+
     render() {
         return (
             <div>
