@@ -10,7 +10,7 @@ router.get('/map', function (req, res) {
   From Carts
   Inner join cartmenus on carts.Cart_Id = cartmenus.cart_id
   Inner join menu on cartmenus.menu_id = menu.menu_id  
-  where carts.Cart_Availability = 'Y' AND cartmenus.available = 'Y'
+  where carts.Cart_Availability = 1 AND cartmenus.available = 'Y'
   group by carts.Cart_Id,Cart_Name, Cart_Location, Latitude, Longitude;`
   let connection = mysql.createConnection(dbCreds);
   connection.connect();
