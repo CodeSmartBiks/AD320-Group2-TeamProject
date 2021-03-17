@@ -57,6 +57,7 @@ class VendorSettings extends React.Component {
                         <span className="slider"></span>
                     </label>
                     <label className='Location'>Current Location</label>
+                    
                     <div className='form-control'>
                         <label> Location</label>
                         <input type='text' placeholder={this.state.settings[0] ? this.state.settings[0].Cart_Location : "fetching data..."} onChange={this.handleLocEdit}
