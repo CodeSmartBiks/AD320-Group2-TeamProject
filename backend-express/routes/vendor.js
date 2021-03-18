@@ -104,7 +104,7 @@ router.put('/carts/:id', (req, res) => {
   connection.connect();
   
   //updating the cart details information
-  connection.query(`UPDATE Carts SET Cart_Location =?, Cart_Availability=?, Latitude =?, Longitude =? WHERE Cart_Id = ?`, [req.body.Cart_Location,req.body.Cart_Availability, req.body.Latitude,req.body.Longitude,req.params.id],
+  connection.query(`UPDATE Carts SET Cart_Location =?, Cart_Availability=?, Latitude = ?, Longitude =? WHERE Cart_Id = ?`, [req.body.Cart_Location,req.body.Cart_Availability, req.body.Latitude,req.body.Longitude,req.params.id],
  (error, results) => {
       if (error) {
         console.log(error)

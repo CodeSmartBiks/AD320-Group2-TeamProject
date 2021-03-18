@@ -21,35 +21,44 @@ class VendorSettings extends React.Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleLatEdit = this.handleLatEdit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        /*this.handleLatEdit = this.handleLatEdit.bind(this);
         this.handleLocEdit = this.handleLocEdit.bind(this);
-        this.handleLngEdit = this.handleLngEdit.bind(this);
+        this.handleLngEdit = this.handleLngEdit.bind(this); */
         this.updateCart = this.updateCart.bind(this);
     }
     handleChange () {
+        //preventDefault();
         this.setState({ checked: !this.state.checked, avail: !this.state.avail })
         
     }
 
-    
+    handleEdit (e) {
+        this.setState({
+            [e.target.name]: e.target.value,
+        })
+    }
+
+    /*
     handleLatEdit (event) {
-        let newLat = this.state.currentLat;
-        newLat[event.target.name] = event.target.value;
-        this.setState({currentLat: newLat});
+        //let newLat = this.state.currentLat;
+        //newLat[event.target.name] = event.target.value;
+        //event.target.defaultValue = this.state.settings[0].Latitude;
+        this.setState({currentLat: event.target.value});
     };
 
     handleLocEdit (event) {
-        let newLoc = this.state.currentLoc;
-        newLoc[event.target.name] = event.target.value;
-        this.setState({currentLoc: newLoc});
+        //let newLoc = this.state.currentLoc;
+        //newLoc[event.target.name] = event.target.value;
+        this.setState({currentLoc: event.target.value});
     };
 
     handleLngEdit (event) {
-        let newLng = this.state.currentLng;
-        newLng[event.target.name] = event.target.value;
-        this.setState({currentLng: newLng});
+        //let newLng = this.state.currentLng;
+        //newLng[event.target.name] = event.target.value;
+        this.setState({currentLng: event.target.value});
     };
-    
+    */
 
     componentDidMount () {
         let test = fetch("http://localhost:3000/vendor/carts/3")
@@ -61,7 +70,7 @@ class VendorSettings extends React.Component {
                 settings: myJson,
                 checked: myJson[0].Cart_Availability,
                 avail: myJson[0].Cart_Availability,
-                /*currentLoc : myJson[0].Cart_Location,
+                /* currentLoc : myJson[0].Cart_Location,
                 currentLat: myJson[0].Latitude,
                 currentLng: myJson[0].Longitude */
                   
@@ -71,14 +80,15 @@ class VendorSettings extends React.Component {
     } 
 
     updateCart () {
+        
         fetch("http://localhost:3000/vendor/carts/3", {
-
+            
             method: 'PUT',
             body: JSON.stringify({
                 Cart_Location: this.state.currentLoc,
                 Cart_Availability: this.state.avail,
-                Latitude: this.state.currentLat,
-                Longitude: this.state.currentLng
+                Latitude: this.state.currentLat, 
+                Longitude: this.state.currentLng 
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -110,17 +120,17 @@ class VendorSettings extends React.Component {
 
                     <div className='form-control'>
                         <label> Location</label>
-                        <input type='text' placeholder={this.state.settings[0] ? this.state.settings[0].Cart_Location : "fetching data..."} onChange={this.handleLocEdit} 
+                        <input type='text' name ="currentLoc" placeholder={this.state.settings[0] ? this.state.settings[0].Cart_Location : "fetching data..."} onChange={this.handleEdit} 
                 />
                  </div>       
                 <div className='form-control'>
                     <label> Longitude</label>
-                    <input type='text' placeholder={this.state.settings[0] ? this.state.settings[0].Longitude : "fetching data..."} onChange={this.handleLngEdit}
+                    <input type='text' name="currentLng" placeholder={this.state.settings[0] ? this.state.settings[0].Longitude : "fetching data..."} onChange={this.handleEdit}
                     />
                 </div>
             <div className='form-control'>
                 <label> Latitude</label>
-                <input type='text' placeholder={this.state.settings[0] ? this.state.settings[0].Latitude : "fetching data..."} onChange={this.handleLatEdit}
+                <input type='text' name = "currentLat" placeholder={this.state.settings[0] ? this.state.settings[0].Latitude : "fetching data..."} onChange={this.handleEdit}
                 />
             </div>
                     <button className='btn' onClick={this.updateCart}> Update Cart </button> 
