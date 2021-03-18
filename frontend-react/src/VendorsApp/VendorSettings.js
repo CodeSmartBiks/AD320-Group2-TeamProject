@@ -75,10 +75,10 @@ class VendorSettings extends React.Component {
 
             method: 'PUT',
             body: JSON.stringify({
-                Cart_Location: `${this.state.currentLoc}`,
+                Cart_Location: this.state.currentLoc,
                 Cart_Availability: this.state.avail,
-                Latitude: `${this.state.currentLat}`,
-                Longitude: `${this.state.currentLng}`
+                Latitude: this.state.currentLat,
+                Longitude: this.state.currentLng
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
