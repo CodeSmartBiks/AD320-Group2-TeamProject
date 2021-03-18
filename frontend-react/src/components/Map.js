@@ -50,7 +50,7 @@ class MapContainer extends React.Component {
             this.setState({
                 carts: myJson
             })
-            console.log(this.state.carts[0].Cart_Id);
+            //console.log(this.state.carts[0].Cart_Id);
             
         })}
      
