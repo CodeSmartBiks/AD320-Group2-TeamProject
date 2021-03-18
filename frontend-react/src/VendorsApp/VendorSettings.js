@@ -9,12 +9,12 @@ class VendorSettings extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: true,
+            checked: 1,
             settings: {},
             currentLoc: {},
             currentLat: {},
             currentLng: {},
-            avail: true,
+            avail: 1,
             
             
 
@@ -24,6 +24,7 @@ class VendorSettings extends React.Component {
         this.handleLatEdit = this.handleLatEdit.bind(this);
         this.handleLocEdit = this.handleLocEdit.bind(this);
         this.handleLngEdit = this.handleLngEdit.bind(this);
+        this.updateCart = this.updateCart.bind(this);
     }
     handleChange () {
         this.setState({ checked: !this.state.checked, avail: !this.state.avail })
@@ -58,27 +59,51 @@ class VendorSettings extends React.Component {
             console.log("FetchResolved", myJson);
             this.setState({
                 settings: myJson,
-                avail: myJson[0].Cart_Availability
+                checked: myJson[0].Cart_Availability,
+                avail: myJson[0].Cart_Availability,
+                /*currentLoc : myJson[0].Cart_Location,
+                currentLat: myJson[0].Latitude,
+                currentLng: myJson[0].Longitude */
                   
             });
           
         })
     } 
 
+    updateCart () {
+        fetch("http://localhost:3000/vendor/carts/3", {
+
+            method: 'PUT',
+            body: JSON.stringify({
+                Cart_Location: `${this.state.currentLoc}`,
+                Cart_Availability: this.state.avail,
+                Latitude: `${this.state.currentLat}`,
+                Longitude: `${this.state.currentLng}`
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then (response => {
+            console.log(response);
+            return response.json()
+        }).then ((json) => {
+            console.log("DB Updated?", json);
+            this.componentDidMount();
+    })
+}
+
+
     render() {
         return (
             <div>
                 <form className='container'>
                 <label className='Availability'>Cart Availability</label>
-                <div className='checkbox-control'>
-                       <label> Cart Availability: </label>
-                
                     <label className="switch1">
                         <input type="checkbox" value="avail slider" checked={this.state.checked} onChange={this.handleChange} />
                         <span className="slider"></span>
                         
                     </label>
-                    </div>
+                    
                     <label className='Location'>Current Location</label>
                 
                    
@@ -98,7 +123,7 @@ class VendorSettings extends React.Component {
                 <input type='text' placeholder={this.state.settings[0] ? this.state.settings[0].Latitude : "fetching data..."} onChange={this.handleLatEdit}
                 />
             </div>
-                    <button className='btn'> Update Cart </button> 
+                    <button className='btn' onClick={this.updateCart}> Update Cart </button> 
                 </form>
             </div>
         );
