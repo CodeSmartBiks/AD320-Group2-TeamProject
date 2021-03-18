@@ -2,7 +2,10 @@ import React from "react";
 import { GoogleMap, LoadScript, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import apiKey from "../googleMapsApiKey.json";
 
-
+import {
+    Link
+  } from "react-router-dom";
+  
 
 const mapStyles = {
     height: "90vh",
@@ -93,7 +96,12 @@ render() {
                 <p>{this.state.selected[0].Cart_Location}</p>
             <h5>Current Menu options:</h5>
                 <p>{this.state.selected[0].Items}</p>
-            <button> Order Here! </button>
+             {/* </div><button> Order Here! </button>  */}
+            <div>
+            <Link to ="/menu"><button>Order Here!</button></Link>
+                </div>
+            
+            
 
         </div>
     </InfoWindow>): null;
