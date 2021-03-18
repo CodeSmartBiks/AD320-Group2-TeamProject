@@ -27,13 +27,37 @@ componentDidMount() {
       })
   }
 
+  updateCart () {
+    const updates = this.state.menuList.map    
+    fetch("http://localhost:3000/vendor/cartMenus/3", {
+        
+        method: 'PUT',
+        body: JSON.stringify({
+            Available: this.state.aval,
+             
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then (response => {
+        console.log(response);
+        return response.json()
+    }).then ((json) => {
+        console.log("DB Updated?", json);
+        this.componentDidMount();
+  })
+  }
+
 render() {
     //menu list items array, map to new array
     const cartMenuListItemsArray = this.state.menuList.map((mlItem) =>
      <MenuListItems key={mlItem.Menu_Id} menuItem={mlItem} aval={mlItem.Available} cart={mlItem.Cart_Id}/>);
    
 
-    return <div>{cartMenuListItemsArray}</div>
+    return <div>
+      {cartMenuListItemsArray}
+      <button className='btn' onClick={this.updateCart}> Update Cart </button>
+      </div>
         
 
 

@@ -11,23 +11,30 @@ class MenuListItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        isChecked: props.isChecked || false,
+        checked: props.aval,
+         
     };
 
     this.handleChange = this.handleChange.bind(this);
 }
 handleChange() {
-    this.setState({ isChecked: !this.state.isChecked })
+    this.setState({ checked: !this.state.checked })
 }
+
+
+
+
     render() {
       return <div>
              <form>
                 <label className='MenuList'>{this.props.menuItem.Menu_Name}</label>
                     <label className="switch">
-                        <input type="checkbox" value={this.state.isChecked} onChange={this.handleChange} />
+                        <input type="checkbox" value={this.state.checked} checked={this.state.checked} onChange={this.handleChange} />
                         <div className="slider"></div>
                     </label>
-                </form>{/*{this.props.menuItem.Available}</h2>*/}
+
+                    
+               </form>  {/*{this.props.menuItem.Available}</h2>*/}
       </div>
     }
   

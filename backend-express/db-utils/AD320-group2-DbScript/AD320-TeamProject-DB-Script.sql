@@ -1,3 +1,36 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@ZenSorcere 
+CodeSmartBiks
+/
+AD320-Group2-TeamProject
+3
+10
+Code
+Issues
+66
+Pull requests
+2
+Actions
+Projects
+Wiki
+Security
+Insights
+AD320-Group2-TeamProject/backend-express/db-utils/AD320-group2-DbScript/AD320-TeamProject-DB-Script.sql
+@ZenSorcere
+ZenSorcere updated db script
+Latest commit e738629 10 hours ago
+ History
+ 3 contributors
+@ZenSorcere@crystalbroderick@CodeSmartBiks
+274 lines (244 sloc)  6.94 KB
+  
 DROP DATABASE IF EXISTS HotDogCarts;
 CREATE DATABASE HotDogCarts;
 Use HotDogCarts;
@@ -59,7 +92,7 @@ CREATE TABLE Carts (
 Cart_Id INT(11) PRIMARY KEY  NOT NULL AUTO_INCREMENT,
 Cart_Name  VARCHAR(50) NOT NULL,
 Cart_Location  VARCHAR(50) NOT NULL,
-Cart_Availability ENUM('Y','N') NOT NULL,
+Cart_Availability TINYINT NOT NULL,
 Latitude DECIMAL(17,14) NOT NULL,
 Longitude DECIMAL(17,14) NOT NULL,
 Employee_Id INT(11) NOT NULL,
@@ -71,14 +104,14 @@ Employee_Id INT(11) NOT NULL,
 INSERT INTO Carts
 (Cart_Name,Cart_Location,Cart_Availability,Latitude,Longitude,Employee_Id)
 VALUES 
-('Cart1','2nd & Cherry','Y','47.60360050566099','-122.33390229782778','2'),  
-('Cart2','GasWorks Park', 'Y','47.64642825417244','-122.33409669417094','3'),
-('Cart3','3rd & Pine', 'Y','47.61087191309346','-122.33868384163716', '4'),
-('GreenCart','Greenlake Bathhouse','Y','47.68241873619547','-122.33982840401887','5');
+('Cart1','2nd & Cherry',1,'47.60360050566099','-122.33390229782778','2'),  
+('Cart2','GasWorks Park', 1,'47.64642825417244','-122.33409669417094','3'),
+('Cart3','3rd & Pine', 1,'47.61087191309346','-122.33868384163716', '4'),
+('GreenCart','Greenlake Bathhouse',1,'47.68241873619547','-122.33982840401887','5');
         
 CREATE TABLE CartMenus (
 CartMenus_Id INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-Available ENUM('Y','N') NOT NULL,
+Available TINYINT NOT NULL,
 Menu_Id INT(11) NOT NULL,
 Cart_Id INT(11) NOT NULL,
 CONSTRAINT CartM_Menu_Id_fk FOREIGN KEY (Menu_Id)
@@ -90,26 +123,26 @@ CONSTRAINT CartM_Cart_Id_fk FOREIGN KEY (Cart_Id)
 INSERT INTO CartMenus
 (Available,Menu_Id,Cart_Id)
 VALUES 
-('Y', 1, 1),
-('Y', 2, 1),
-('Y', 3, 1),
-('Y', 4, 1),
-('Y', 5, 1),
-('N', 1, 2),
-('Y', 2, 2),
-('N', 3, 2),
-('N', 4, 2),
-('N', 5, 2),
-('Y', 1, 3),
-('N', 2, 3),
-('N', 3, 3),
-('N', 4, 3),
-('Y', 5, 3),
-('N', 1, 4),
-('N', 2, 4),
-('N', 3, 4),
-('Y', 4, 4),
-('Y', 5, 4);    
+(1, 1, 1),
+(1, 2, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(0, 1, 2),
+(1, 2, 2),
+(0, 3, 2),
+(0, 4, 2),
+(0, 5, 2),
+(1, 1, 3),
+(0, 2, 3),
+(0, 3, 3),
+(0, 4, 3),
+(1, 5, 3),
+(0, 1, 4),
+(0, 2, 4),
+(0, 3, 4),
+(1, 4, 4),
+(1, 5, 4);    
         
         
 CREATE TABLE Orders (
