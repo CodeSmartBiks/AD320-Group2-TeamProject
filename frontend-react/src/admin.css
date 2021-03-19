@@ -1,0 +1,18 @@
+.cartTable {
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 30px;
+    border: 2px solid rgb(180, 179, 170);
+    border-collapse: collapse;
+}
+
+.cartTable td, th {
+    border: 1px solid rgb(180, 179, 170);
+    padding: .5rem;
+    text-align: left;
+}
+
+.cartTable tbody tr:nth-child(odd) {
+    background: rgb(180, 179, 170);
+}
