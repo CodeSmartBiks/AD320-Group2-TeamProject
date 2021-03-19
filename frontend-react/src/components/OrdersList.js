@@ -1,11 +1,10 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 import '../index.css';
 import '../Nav.css';
 import OrderEntry from './OrderEntry.js';
 
- class OrdersList extends React.Component {
+ class OrdersList extends Component {
     constructor(props) {
         super(props); 
 
