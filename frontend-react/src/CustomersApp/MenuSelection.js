@@ -11,7 +11,7 @@ import Basket from './Basket';
 
 const MenuSelection = () => {
   const [menuList, setMenuList] = useState([]);
-  //const [quantity, setQuantity] = useState([0]);
+  const [quantity, setQuantity] = useState([0]);
   //const [menuItem, setMenuItem] = useState([]);
   const [basketItems, setBasketItems] = useState([]); 
 
@@ -30,6 +30,16 @@ const MenuSelection = () => {
 
   const addToBasket = (menuItem) => {
     setBasketItems([...basketItems, menuItem]);
+    setQuantity(quantity + 1)
+
+  }
+
+  const removeFromBasket = (menuItem) => {
+    setBasketItems(basketItems.filter(menuItem => menuItem.Menu_Id !== menuItem.Menu_Id))
+  }
+
+  const clearBasket = () => {
+    setBasketItems([]);
   }
 
 
@@ -52,7 +62,7 @@ const MenuSelection = () => {
         return response.json()
     }).then ((json) => {
         console.log("DB Updated?", json);
-        //this.loadMenu();
+        clearBasket();
     })
 
     
@@ -72,16 +82,19 @@ const MenuSelection = () => {
         
                         {/*Map array to List all Cart Menu options}*/}
                         {menuList.map((menuItem)=>(
-                <MenuItem key={menuItem.Menu_Id} menuItem={menuItem} addToBasket={addToBasket} />
+                <MenuItem key={menuItem.Menu_Id} menuItem={menuItem} addToBasket={addToBasket} removeFromBasket={removeFromBasket}/>
               ))}
         </div>
         <div className="aside">
             <div className="column-cart">
-              <Basket basketItems={basketItems} addToBasket={addToBasket}/>
+              <Basket basketItems={basketItems} addToBasket={addToBasket} removeFromBasket={removeFromBasket}/>
             </div>
         </div>
             <div >
               <button className="order-button" onClick={() =>orderSend()}>Send Order</button>
+            </div>
+            <div >
+              <button className="order-button" onClick={() =>clearBasket()}>Empty Cart</button>
             </div>
             
       </div>

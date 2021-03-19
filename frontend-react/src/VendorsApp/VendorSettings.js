@@ -15,6 +15,54 @@ class VendorSettings extends React.Component {
     handleChange() {
         this.setState({ isChecked: !this.state.isChecked })
     }
+<<<<<<< HEAD
+=======
+    
+
+    componentDidMount () {
+        let test = fetch("http://localhost:3000/vendor/carts/3")
+        .then((results) => {
+            return results.json();
+        }).then((myJson) => {
+            console.log("FetchResolved", myJson);
+            this.setState({
+                settings: myJson,
+                checked: myJson[0].Cart_Availability,
+                avail: myJson[0].Cart_Availability,
+                currentLoc : myJson[0].Cart_Location,
+                currentLat: myJson[0].Latitude,
+                currentLng: myJson[0].Longitude
+                  
+            });
+          
+        })
+    } 
+
+    updateCart () {
+        
+        fetch("http://localhost:3000/vendor/carts/3", {
+            
+            method: 'PUT',
+            body: JSON.stringify({
+                Cart_Location: this.state.currentLoc,
+                Cart_Availability: this.state.avail,
+                Latitude: this.state.currentLat, 
+                Longitude: this.state.currentLng 
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then (response => {
+            console.log(response);
+            return response.json()
+        }).then ((json) => {
+            console.log("DB Updated?", json);
+            this.componentDidMount();
+    })
+}
+
+
+>>>>>>> d918c2e354fba76c5bdadf4c09e760109d24e2f9
     render() {
         return (
             <div>
