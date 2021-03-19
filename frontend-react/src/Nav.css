@@ -34,7 +34,7 @@ ul.topnav li {
 /* Style the links inside the list items */
 ul.topnav li a {
     display: block;
-    /* color: #f2f2f2; */
+    color: black;
     text-align: center;
     padding: 14px 16px;
     /* padding: 4% 30%; */
