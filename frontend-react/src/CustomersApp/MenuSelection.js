@@ -62,7 +62,7 @@ const MenuSelection = () => {
         return response.json()
     }).then ((json) => {
         console.log("DB Updated?", json);
-        //this.loadMenu();
+        clearBasket();
     })
 
     
