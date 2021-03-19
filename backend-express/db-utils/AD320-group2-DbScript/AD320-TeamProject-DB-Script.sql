@@ -59,7 +59,7 @@ CREATE TABLE Carts (
 Cart_Id INT(11) PRIMARY KEY  NOT NULL AUTO_INCREMENT,
 Cart_Name  VARCHAR(50) NOT NULL,
 Cart_Location  VARCHAR(50) NOT NULL,
-Cart_Availability TINYINT NOT NULL,
+Cart_Availability ENUM('Y','N') NOT NULL,
 Latitude DECIMAL(17,14) NOT NULL,
 Longitude DECIMAL(17,14) NOT NULL,
 Employee_Id INT(11) NOT NULL,
@@ -71,10 +71,10 @@ Employee_Id INT(11) NOT NULL,
 INSERT INTO Carts
 (Cart_Name,Cart_Location,Cart_Availability,Latitude,Longitude,Employee_Id)
 VALUES 
-('Cart1','2nd & Cherry',1,'47.60360050566099','-122.33390229782778','2'),  
-('Cart2','GasWorks Park', 1,'47.64642825417244','-122.33409669417094','3'),
-('Cart3','3rd & Pine', 1,'47.61087191309346','-122.33868384163716', '4'),
-('GreenCart','Greenlake Bathhouse',1,'47.68241873619547','-122.33982840401887','5');
+('Cart1','2nd & Cherry','Y','47.60360050566099','-122.33390229782778','2'),  
+('Cart2','GasWorks Park', 'Y','47.64642825417244','-122.33409669417094','3'),
+('Cart3','3rd & Pine', 'Y','47.61087191309346','-122.33868384163716', '4'),
+('GreenCart','Greenlake Bathhouse','Y','47.68241873619547','-122.33982840401887','5');
         
 CREATE TABLE CartMenus (
 CartMenus_Id INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,

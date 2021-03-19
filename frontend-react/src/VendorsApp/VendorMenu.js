@@ -11,7 +11,6 @@ import MenuPanel from "./MenuPanel";
 
 
 function VendorMenu () {
-
     return (
         <div>
             {/* Vendor Menu - React Router */}

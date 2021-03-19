@@ -353,45 +353,6 @@ button {
 
 /* END ORDER ENTRY SAMPLE CSS */ 
 
-/* STAR]T CHECKBOX FORM STYLES 
-.checkbox {
-  position:relative;
-  margin-right: 87px;
-  width: 60px;
-  height: 34px;
-  outline:none;
-  margin-bottom: 5px;
-  display: inline-block;
-  margin-left: 140px;
-}
-.checkbox-control {
-  margin: 20px 0;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin-left: 100px;
-  margin-top: 50px;;
-}
-.checkbox-control label {
-  display: block;
-}
-.checkbox-control input {
-  width: 20%;
-  height: 20px;
-  margin: 5px;
-  float:right;
-  padding: 2px 5px;
-  font-size: 10px;
-  margin-right: 200px;
-}
-.checkbox-control-check {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.checkbox-control-check label {
-  flex: 1;
-}
-*/
 
 /* START RESPONSIVE STYLES */
 

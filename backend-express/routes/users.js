@@ -36,7 +36,7 @@ router.get('/cart/:id', function (req, res, next) {
   USING(Cart_Id)
   JOIN menu m
   USING(Menu_Id)
- where Cart_Id= '${req.params.id}' AND Available = 'Y';`;
+ where Cart_Id= '${req.params.id}' AND Available = 1;`;
 
 
   let connection = mysql.createConnection(dbCreds);
@@ -67,7 +67,7 @@ router.get('/map/:id', function(req, res, next) {
     FROM carts c
     JOIN cartmenus cm ON c.Cart_Id = cm.Cart_Id
     JOIN menu m ON m.Menu_Id = cm.Menu_Id
-    WHERE Available = 'Y' AND c.Cart_Id = '${req.params.id}';`,[req.params.id], (error, results) => {
+    WHERE Available = 1 AND c.Cart_Id = '${req.params.id}';`,[req.params.id], (error, results) => {
       /* if req.params.id doesn't match a Cart_Id, return 204 http status and a "no cart found msg"? */
       if (results.length === 0) {
         res.status(404).send("Cart Not Found");
