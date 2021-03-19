@@ -15,8 +15,6 @@ class VendorSettings extends React.Component {
     handleChange() {
         this.setState({ isChecked: !this.state.isChecked })
     }
-<<<<<<< HEAD
-=======
     
 
     componentDidMount () {
@@ -62,7 +60,6 @@ class VendorSettings extends React.Component {
 }
 
 
->>>>>>> d918c2e354fba76c5bdadf4c09e760109d24e2f9
     render() {
         return (
             <div>
