@@ -38,27 +38,7 @@ class VendorSettings extends React.Component {
             [e.target.name]: e.target.value,
         })
     }
-
-    /*
-    handleLatEdit (event) {
-        //let newLat = this.state.currentLat;
-        //newLat[event.target.name] = event.target.value;
-        //event.target.defaultValue = this.state.settings[0].Latitude;
-        this.setState({currentLat: event.target.value});
-    };
-
-    handleLocEdit (event) {
-        //let newLoc = this.state.currentLoc;
-        //newLoc[event.target.name] = event.target.value;
-        this.setState({currentLoc: event.target.value});
-    };
-
-    handleLngEdit (event) {
-        //let newLng = this.state.currentLng;
-        //newLng[event.target.name] = event.target.value;
-        this.setState({currentLng: event.target.value});
-    };
-    */
+    
 
     componentDidMount () {
         let test = fetch("http://localhost:3000/vendor/carts/3")
@@ -70,9 +50,9 @@ class VendorSettings extends React.Component {
                 settings: myJson,
                 checked: myJson[0].Cart_Availability,
                 avail: myJson[0].Cart_Availability,
-                /* currentLoc : myJson[0].Cart_Location,
+                currentLoc : myJson[0].Cart_Location,
                 currentLat: myJson[0].Latitude,
-                currentLng: myJson[0].Longitude */
+                currentLng: myJson[0].Longitude
                   
             });
           
